@@ -625,23 +625,30 @@ function normalizeJSON(rows){
 function processRows(rows){RAW=rows}
 function useDemoData(){setSt(false,'Demo');document.getElementById('ftxt').textContent='Demo';renderAll(true)}
 
-// ── VENDOR / CLIENT / SUBCAT helpers (FIXED: AGENCIA now included) ─────────
+// ── VENDOR / CLIENT / SUBCAT helpers ──────────────────────────────────────
+function getFiltered(demo){
+  // Central filtered source respecting YR, MES, SEM, CT filters
+  const src = (demo||RAW.length===0) ? DEMO : RAW;
+  return src.filter(r=>{
+    const yrOk  = YR==='all'  || r.mes.startsWith(YR);
+    const mesOk = MES==='all' || r.mes===MES;
+    const catOk = CT==='all'  || r.cat===CT;
+    return yrOk && mesOk && catOk;
+  });
+}
 function getCli(d){
   if(d||RAW.length===0) return D_CLI;
   const m={};
-  RAW.forEach(r=>{if(!r.cli)return;m[r.cli]=(m[r.cli]||0)+r.t});
+  getFiltered(d).forEach(r=>{if(!r.cli)return;m[r.cli]=(m[r.cli]||0)+r.t});
   return Object.entries(m).map(([n,v])=>({n,v})).sort((a,b)=>b.v-a.v).slice(0,8);
 }
 function getVen(d){
   if(d||RAW.length===0) return D_VEN;
   const m={};
-  // All vendors shown including AGENCIA / AGENCIA 2.
-  // Rows with blank vendor go to "(Sin asignar)" so they never bleed into named vendors.
-  RAW.forEach(r=>{
-    const vend = r.vend && r.vend.trim() ? r.vend.trim() : "(Sin asignar)";
+  getFiltered(d).forEach(r=>{
+    const vend = r.vend && r.vend.trim() ? r.vend.trim() : '(Sin asignar)';
     m[vend]=(m[vend]||0)+r.t;
   });
-  // Exclude truly empty-string keys just in case
   return Object.entries(m)
     .filter(([n])=>n.length>0)
     .map(([n,v])=>({n,v}))
@@ -651,7 +658,7 @@ function getVen(d){
 function getSub(d){
   if(d||RAW.length===0) return D_SUB;
   const m={},c={};
-  RAW.forEach(r=>{if(!r.sub)return;m[r.sub]=(m[r.sub]||0)+r.t;c[r.sub]=r.cat});
+  getFiltered(d).forEach(r=>{if(!r.sub)return;m[r.sub]=(m[r.sub]||0)+r.t;c[r.sub]=r.cat});
   return Object.entries(m).map(([n,v])=>({n,v,cat:c[n]||'OTRO'})).sort((a,b)=>b.v-a.v).slice(0,10);
 }
 
@@ -851,6 +858,7 @@ function applyF(){
   CT=document.getElementById('f-cat').value;
   const d=RAW.length===0;
   renderKPIs(d);renderCharts(d);renderDonut(d);
+  renderCli(d);renderVen(d);renderSub(d);
 }
 
 // ── RENDER ALL ─────────────────────────────────────────────────────────────
