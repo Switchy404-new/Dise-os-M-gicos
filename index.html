@@ -620,7 +620,7 @@ function normalizeJSON(rows){
       vend:(o['Nombre del Vendedor']||'').trim(),cli:(o['Nombre Cliente']||'').trim(),
       t:parseFloat(String(o['Total']||o['total']||'0').replace(/[^0-9.-]/g,''))||0,
       u:parseFloat(String(o['Cantidad']||o['cantidad']||o['Unidades']||o['unidades']||'0').replace(/[^0-9.-]/g,''))||0};
-  }).filter(r=>r.mes&&r.t>0);
+  }).filter(r=>r.mes&&r.t!==0);
 }
 function processRows(rows){RAW=rows}
 function useDemoData(){setSt(false,'Demo');document.getElementById('ftxt').textContent='Demo';renderAll(true)}
