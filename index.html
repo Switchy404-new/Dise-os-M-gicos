@@ -52,16 +52,33 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);min-hei
 .mrow input{flex:1;background:var(--s3);border:1px solid var(--b2);padding:6px 10px;color:var(--t1);font-size:11px;font-family:inherit;outline:none}
 .mrow input:focus{border-color:var(--ac2)}
 .mrow .unit{font-size:9px;color:var(--t3);white-space:nowrap}
-.filters{background:var(--s1);border-bottom:1px solid var(--b1);height:42px;padding:0 28px;display:flex;align-items:stretch;flex-wrap:nowrap;overflow-x:auto}
-.fg{display:flex;align-items:center;gap:7px;padding:0 14px;border-right:1px solid var(--b1);flex-shrink:0}
-.fg:first-child{padding-left:0}
-.fg.hidden{display:none}
-.flbl{font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;font-weight:600;white-space:nowrap}
-select{background:transparent;border:none;color:var(--t1);font-size:11px;font-family:inherit;cursor:pointer;outline:none;appearance:none;padding:0 2px}
-select option{background:var(--s3)}
-.fmeta{background:transparent;border:none;border-right:1px solid var(--b1);color:var(--ac2);padding:0 14px;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px}
-.fmeta:hover{color:var(--ac2h)}
-.fbadge{margin-left:auto;font-size:9px;color:var(--t3);display:flex;align-items:center;gap:5px;padding-left:14px;flex-shrink:0}
+/* FILTERS multi */
+.filters{background:var(--s1);border-bottom:1px solid var(--b1);min-height:42px;padding:6px 28px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fdrop{position:relative}
+.fbtn{background:var(--s3);border:1px solid var(--b1);color:var(--t1);padding:5px 12px;font-size:10px;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s;text-transform:uppercase;letter-spacing:.5px}
+.fbtn:hover{border-color:var(--ac1)}
+.fbtn.active{border-color:var(--ac1);color:var(--ac1h)}
+.fbtn .cnt{background:var(--ac1);color:#fff;font-size:8px;font-weight:700;padding:1px 5px;border-radius:8px;min-width:14px;text-align:center}
+.fbtn .arr{font-size:8px;color:var(--t3)}
+.fmenu{display:none;position:absolute;top:calc(100% + 4px);left:0;background:var(--s2);border:1px solid var(--b2);min-width:180px;max-height:280px;overflow-y:auto;z-index:60;box-shadow:var(--shadow2);padding:6px}
+.fmenu.open{display:block}
+.fsearch{width:100%;background:var(--s3);border:1px solid var(--b1);padding:6px 8px;color:var(--t1);font-size:10px;font-family:inherit;outline:none;margin-bottom:6px}
+.fsearch:focus{border-color:var(--ac1)}
+.fopt{display:flex;align-items:center;gap:7px;padding:5px 7px;font-size:11px;color:var(--t2);cursor:pointer;transition:background .12s}
+.fopt:hover{background:var(--s3)}
+.fopt .chk{width:13px;height:13px;border:1px solid var(--b2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff}
+.fopt.sel .chk{background:var(--ac1);border-color:var(--ac1)}
+.fopt.sel{color:var(--t1)}
+.fclear{background:transparent;border:none;color:var(--ac2);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;padding:5px 8px}
+.fclear:hover{color:var(--ac2h)}
+.fmeta{background:transparent;border:1px solid rgba(201,138,144,.3);color:var(--ac2);padding:5px 12px;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:inherit}
+.fmeta:hover{border-color:var(--ac2)}
+.fbadge{margin-left:auto;font-size:9px;color:var(--t3);display:flex;align-items:center;gap:5px}
+/* drill banner */
+.drill{display:none;background:rgba(74,122,130,.12);border-bottom:1px solid var(--ac1);padding:7px 28px;align-items:center;gap:10px;font-size:11px;color:var(--ac1h)}
+.drill.show{display:flex}
+.drill b{color:var(--t1);font-weight:600}
+.drill .x{margin-left:auto;background:var(--ac1);border:none;color:#fff;width:18px;height:18px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .page{padding:20px 28px 40px}
 .slbl{font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1.8px;font-weight:600;margin:18px 0 10px;display:flex;align-items:center;gap:10px}
 .slbl::after{content:'';flex:1;height:1px;background:var(--b1)}
@@ -79,14 +96,7 @@ select option{background:var(--s3)}
 .g3{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px;margin-bottom:10px}
 .ctitle{font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1.2px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .cpill{width:16px;height:2px;flex-shrink:0}
-/* drill buttons */
-.drill-bar{display:flex;align-items:center;gap:6px;margin-bottom:10px;flex-wrap:wrap}
-.drill-btn{background:var(--s3);border:1px solid var(--b2);color:var(--t2);padding:4px 10px;font-size:9px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:all .15s;display:flex;align-items:center;gap:4px}
-.drill-btn:hover{border-color:var(--t2);color:var(--t1)}
-.drill-btn.active{background:var(--ac1);border-color:var(--ac1);color:#fff}
-.drill-btn.up{border-color:rgba(201,138,144,.4);color:var(--ac2)}
-.drill-btn.up:hover{border-color:var(--ac2)}
-.drill-lbl{font-size:9px;color:var(--t3);margin-left:auto;font-weight:500}
+.chint{margin-left:auto;font-size:8px;color:var(--t3);text-transform:none;letter-spacing:0}
 .cleg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .li{display:flex;align-items:center;gap:5px;cursor:pointer;padding:2px 8px;border:1px solid transparent;font-size:9px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:all .15s;user-select:none}
 .li.on{border-color:currentColor}.li.off{opacity:.25}
@@ -98,23 +108,29 @@ svg.ch{width:100%;height:100%;display:block}
 .tip-r{display:flex;align-items:center;gap:6px;margin-top:4px}
 .tip-d{width:5px;height:5px;flex-shrink:0;border-radius:1px}
 .tip-n{color:var(--t2);flex:1}.tip-v{font-weight:600;color:var(--t1)}
+.tip-hint{font-size:8px;color:var(--ac1h);margin-top:6px;padding-top:5px;border-top:1px solid var(--b1)}
 .dwrap{display:flex;align-items:center;gap:18px}
 .dleg{flex:1;display:flex;flex-direction:column;gap:8px}
-.drow{display:flex;align-items:center;gap:7px}
+.drow{display:flex;align-items:center;gap:7px;cursor:pointer;padding:2px 4px;transition:background .12s}
+.drow:hover{background:var(--s3)}
+.drow.dsel{background:rgba(74,122,130,.15)}
 .dbar{width:2px;height:14px;flex-shrink:0}
 .dname{color:var(--t2);flex:1;font-size:10px}.dpct{font-weight:500;color:var(--t1);font-size:10px}
 .blist{display:flex;flex-direction:column;gap:7px}
-.brow{display:flex;align-items:center;gap:8px}
+.brow{display:flex;align-items:center;gap:8px;cursor:pointer}
+.brow:hover .btrk{outline:1px solid var(--b2)}
+.brow.bsel .bfil{outline:1px solid var(--t1)}
 .blbl{font-size:9px;color:var(--t2);width:110px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.btrk{flex:1;height:14px;background:var(--s4);overflow:hidden;position:relative}
+.btrk{flex:1;height:14px;background:var(--s4);overflow:hidden}
 .bfil{height:100%;display:flex;align-items:center;padding:0 6px;transition:width .6s ease}
 .bval{font-size:8px;font-weight:600;color:rgba(255,255,255,.7);white-space:nowrap}
-.bpct{font-size:8px;color:var(--t3);width:32px;flex-shrink:0;text-align:right}
 .vt{width:100%;border-collapse:collapse}
 .vt th{font-size:8px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;padding:0 8px 8px;border-bottom:1px solid var(--b1);text-align:left;font-weight:600}
 .vt td{font-size:10px;padding:7px 8px;border-bottom:1px solid var(--b1);color:var(--t2)}
+.vt tr{cursor:pointer}
 .vt tr:last-child td{border-bottom:none}
 .vt tr:hover td{background:var(--s3)}
+.vt tr.vsel td{background:rgba(74,122,130,.15)}
 .vrk{font-weight:600;font-size:10px}
 .load{display:none;position:fixed;inset:0;background:rgba(28,33,40,.88);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:12px}
 .load.on{display:flex}
@@ -124,21 +140,6 @@ svg.ch{width:100%;height:100%;display:block}
 .foot{text-align:center;padding:14px;font-size:9px;color:var(--t3);border-top:1px solid var(--b1);letter-spacing:1.2px;text-transform:uppercase;background:var(--s1)}
 @media(max-width:900px){.kgrid{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
 @media(max-width:600px){.kgrid{grid-template-columns:1fr}.page{padding:12px 14px 28px}}
-
-/* ── Modo Blanco (tema claro) ──────────────────────────────────── */
-body.bw-mode{
-  --bg:#F4F5F7;--s1:#FFFFFF;--s2:#F8F9FA;--s3:#ECEEF1;--s4:#E0E3E8;
-  --b1:#D0D4DB;--b2:#BCC1CA;
-  --t1:#1A2233;--t2:#4A5568;--t3:#8896A8;
-  --ac1:#2E6B74;--ac1h:#3A7D88;--ac2:#A05060;--ac2h:#B86070;
-  --c-int:#2E6B8A;--c-ext:#2E7A62;--c-tel:#A05060;--c-tej:#7A5830;--c-cop:#4A7AA0;--c-tot:#1A2233;
-  --shadow:0 1px 6px rgba(0,0,0,.10);--shadow2:0 4px 20px rgba(0,0,0,.15);
-  background:var(--bg);color:var(--t1)
-}
-body.bw-mode .tbtn#btn-bw{border-color:var(--ac1);color:var(--ac1)}
-body.bw-mode select option{background:#fff}
-body.bw-mode .load{background:rgba(244,245,247,.92)}
-body.bw-mode .spin{border-color:#D0D4DB;border-top-color:var(--ac1)}
 </style>
 </head>
 <body>
@@ -146,28 +147,22 @@ body.bw-mode .spin{border-color:#D0D4DB;border-top-color:var(--ac1)}
 <div class="overlay" id="modal">
   <div class="mbox">
     <h2>Conectar Google Sheets</h2>
-    <p class="msub">Pega el URL de tu Apps Script (<code>/exec</code>). Acceso: <strong>Cualquier persona</strong>.</p>
-    <div class="mstep"><div class="msn">1</div><div class="mst">En tu Google Sheet: <strong>Extensiones → Apps Script</strong>. Pega el código JSONP y guarda.</div></div>
-    <div class="mstep"><div class="msn">2</div><div class="mst"><strong>Implementar → Nueva implementación → Aplicación web.</strong> Acceso: <strong>Cualquier persona</strong>. Copia el URL <code>/exec</code>.</div></div>
-    <div class="mstep"><div class="msn">3</div><div class="mst">Pega el URL abajo y haz clic en Conectar.</div></div>
+    <p class="msub">Pega el URL de tu Apps Script (<code>/exec</code>) con acceso <strong>Cualquier persona</strong>.</p>
+    <div class="mstep"><div class="msn">1</div><div class="mst"><strong>Extensiones → Apps Script</strong>. Pega el código JSONP y guarda.</div></div>
+    <div class="mstep"><div class="msn">2</div><div class="mst"><strong>Implementar → Nueva implementación → App web.</strong> Acceso: Cualquier persona.</div></div>
+    <div class="mstep"><div class="msn">3</div><div class="mst">Copia el URL <code>/exec</code> y pégalo abajo.</div></div>
     <label class="mlbl">URL del Apps Script</label>
     <input class="minp" type="text" id="sheets-url" placeholder="https://script.google.com/macros/s/XXXX/exec">
-    <div class="mbtns">
-      <button class="mbtn-s" onclick="closeM();useDemoData();">Datos demo</button>
-      <button class="mbtn-p" onclick="connectSheets()">Conectar</button>
-    </div>
+    <div class="mbtns"><button class="mbtn-s" onclick="closeM();useDemoData();">Datos demo</button><button class="mbtn-p" onclick="connectSheets()">Conectar</button></div>
   </div>
 </div>
 <div class="overlay" id="mmeta">
   <div class="mbox">
     <h2>Metas de Ventas</h2>
-    <p class="msub">Meta anual. El gráfico muestra anual ÷ 12 (meta mensual) o ÷ 52 (semanal).</p>
+    <p class="msub">Meta anual. El gráfico muestra anual ÷ 12 (meta mensual).</p>
     <div class="msec">Ventas — Miles de Millones COP</div><div id="mcop"></div>
     <div class="msec">Unidades — Miles de Unidades</div><div id="muni"></div>
-    <div class="mbtns" style="margin-top:14px">
-      <button class="mbtn-s" onclick="closeMetaM()">Cancelar</button>
-      <button class="mbtn-p" onclick="saveMetas()">Guardar</button>
-    </div>
+    <div class="mbtns" style="margin-top:14px"><button class="mbtn-s" onclick="closeMetaM()">Cancelar</button><button class="mbtn-p" onclick="saveMetas()">Guardar</button></div>
   </div>
 </div>
 <div class="topbar">
@@ -186,70 +181,33 @@ body.bw-mode .spin{border-color:#D0D4DB;border-top-color:var(--ac1)}
     <div class="divider"></div>
     <div class="topbar-sub"><h1>Tablero Comercial</h1><p>Gerencia Comercial · <span id="period-lbl">2025–2026</span></p></div>
   </div>
-  <div class="tr">
-    <div class="sdot" id="sdot"></div><span class="stxt" id="stxt">Sin datos</span>
-    <button class="tbtn" id="btn-bw" onclick="toggleBW()" title="Blanco y Negro / Color">◑ B&amp;N</button>
-    <button class="tbtn" onclick="refreshData()">↻ Actualizar</button>
-    <button class="tbtn rose" onclick="openM()">Sheets</button>
-  </div>
+  <div class="tr"><div class="sdot" id="sdot"></div><span class="stxt" id="stxt">Sin datos</span><button class="tbtn" onclick="refreshData()">↻ Actualizar</button><button class="tbtn rose" onclick="openM()">Sheets</button></div>
 </div>
-<div class="filters">
-  <div class="fg"><span class="flbl">Año</span>
-    <select id="f-year" onchange="applyF()"><option value="all">Todos</option><option value="2025">2025</option><option value="2026">2026</option></select>
-  </div>
-  <div class="fg" id="fg-mes"><span class="flbl">Mes</span>
-    <select id="f-mes" onchange="applyF()"><option value="all">Todos</option></select>
-  </div>
-  <div class="fg hidden" id="fg-sem"><span class="flbl">Semana</span>
-    <select id="f-sem" onchange="applyF()"><option value="all">Todas</option></select>
-  </div>
-  <div class="fg"><span class="flbl">Línea</span>
-    <select id="f-cat" onchange="applyF()">
-      <option value="all">Todas</option><option value="INTERIOR">Interior</option><option value="EXTERIOR">Exterior</option>
-      <option value="TELA">Tela</option><option value="COPAS">Copas</option><option value="SERVICIO DE TEJEDURIA">Sv. Tejeduría</option>
-    </select>
-  </div>
-  <div class="fg"><span class="flbl">Etiquetas</span>
-    <select id="f-lbl" onchange="renderCharts()"><option value="all">Todas</option><option value="top">Top 3</option><option value="none">Ninguna</option></select>
-  </div>
-  <button class="fmeta" onclick="openMetaM()">◎ Metas</button>
-  <div class="fbadge"><span id="ficon">○</span><span id="ftxt">Sin conectar</span></div>
-</div>
+<div class="filters" id="filters"></div>
+<div class="drill" id="drill"><span id="drill-txt"></span><button class="x" onclick="clearDrill()">×</button></div>
 <div class="page">
   <div class="slbl">Resumen</div>
   <div class="kgrid" id="kgrid"></div>
   <div class="slbl">Evolución — COP</div>
   <div class="card" style="margin-bottom:10px">
-    <div class="drill-bar" id="drill-cop">
-      <button class="drill-btn active" data-lvl="year" onclick="setDrillCOP('year')">Año</button>
-      <button class="drill-btn" data-lvl="month" onclick="setDrillCOP('month')">Mes</button>
-      <button class="drill-btn" data-lvl="week" onclick="setDrillCOP('week')">Semana</button>
-      <span class="drill-lbl" id="drill-cop-lbl"></span>
-    </div>
-    <div class="ctitle"><div class="cpill" style="background:var(--ac1)"></div>Ventas por Línea — Miles de Millones COP<span id="mlbl-cop" style="margin-left:auto;font-size:9px;color:var(--ac2)"></span></div>
+    <div class="ctitle"><div class="cpill" style="background:var(--ac1)"></div>Ventas por Línea — Miles de Millones COP<span class="chint">clic en un punto = filtrar ese mes</span><span id="mlbl-cop" style="margin-left:10px;font-size:9px;color:var(--ac2)"></span></div>
     <div class="cleg" id="leg-cop"></div>
     <div class="cwrap"><svg id="svg-cop" class="ch"></svg><div class="tip" id="tip-cop"></div></div>
   </div>
   <div class="slbl">Evolución — Unidades</div>
   <div class="card" style="margin-bottom:10px">
-    <div class="drill-bar" id="drill-uni">
-      <button class="drill-btn active" data-lvl="year" onclick="setDrillUNI('year')">Año</button>
-      <button class="drill-btn" data-lvl="month" onclick="setDrillUNI('month')">Mes</button>
-      <button class="drill-btn" data-lvl="week" onclick="setDrillUNI('week')">Semana</button>
-      <span class="drill-lbl" id="drill-uni-lbl"></span>
-    </div>
-    <div class="ctitle"><div class="cpill" style="background:var(--ac2)"></div>Ventas por Línea — Unidades<span id="mlbl-uni" style="margin-left:auto;font-size:9px;color:var(--ac2)"></span></div>
+    <div class="ctitle"><div class="cpill" style="background:var(--ac2)"></div>Ventas por Línea — Unidades<span class="chint">clic en un punto = filtrar ese mes</span><span id="mlbl-uni" style="margin-left:10px;font-size:9px;color:var(--ac2)"></span></div>
     <div class="cleg" id="leg-uni"></div>
     <div class="cwrap"><svg id="svg-uni" class="ch"></svg><div class="tip" id="tip-uni"></div></div>
   </div>
   <div class="slbl">Distribución · Clientes · Vendedores</div>
   <div class="g3">
-    <div class="card"><div class="ctitle"><div class="cpill" style="background:var(--c-tel)"></div>Participación por Línea</div><div class="dwrap"><canvas id="donut" width="120" height="120" style="flex-shrink:0"></canvas><div class="dleg" id="dleg"></div></div></div>
-    <div class="card"><div class="ctitle"><div class="cpill" style="background:var(--c-ext)"></div>Top Clientes</div><div class="blist" id="cbars"></div></div>
-    <div class="card"><div class="ctitle"><div class="cpill" style="background:var(--c-cop)"></div>Ranking Vendedores</div><table class="vt"><thead><tr><th>#</th><th>Vendedor</th><th>Ventas</th><th>%</th></tr></thead><tbody id="vbody"></tbody></table></div>
+    <div class="card"><div class="ctitle"><div class="cpill" style="background:var(--c-tel)"></div>Participación por Línea<span class="chint">clic = filtrar línea</span></div><div class="dwrap"><canvas id="donut" width="120" height="120" style="flex-shrink:0"></canvas><div class="dleg" id="dleg"></div></div></div>
+    <div class="card"><div class="ctitle"><div class="cpill" style="background:var(--c-ext)"></div>Top Clientes<span class="chint">clic = filtrar</span></div><div class="blist" id="cbars"></div></div>
+    <div class="card"><div class="ctitle"><div class="cpill" style="background:var(--c-cop)"></div>Ranking Vendedores<span class="chint">clic = filtrar</span></div><table class="vt"><thead><tr><th>#</th><th>Vendedor</th><th>Ventas</th><th>%</th></tr></thead><tbody id="vbody"></tbody></table></div>
   </div>
   <div class="slbl">Subcategorías</div>
-  <div class="card"><div class="ctitle"><div class="cpill" style="background:var(--c-tej)"></div>Top Subcategorías</div><div class="blist" id="sbars"></div></div>
+  <div class="card"><div class="ctitle"><div class="cpill" style="background:var(--c-tej)"></div>Top Subcategorías<span class="chint">clic = filtrar subcategoría</span></div><div class="blist" id="sbars"></div></div>
 </div>
 <div class="foot">Bassis Consultoría · Diseños Mágicos S.A.S · Tablero Estrategia Comercial · 2025–2026</div>
 <script>
@@ -258,150 +216,23 @@ const TOT={key:'__T__',label:'Total',color:'#C8D4DC',dash:false};
 const CCAT={'INTERIOR':'#5B8FA8','EXTERIOR':'#5A9E8A','TELA':'#C98A90','SERVICIO DE TEJEDURIA':'#A07858','COPAS':'#8AACC0','OTRO':'#5A6878'};
 const RKCOL=['#C98A90','#8AACC0','#5A9E8A','#5B8FA8','#A07858','#7A909C','#C98A90','#5A9E8A'];
 const DEF_M={cop:{'__G__':32e9,INTERIOR:0,EXTERIOR:0,TELA:0,'SERVICIO DE TEJEDURIA':0,COPAS:0},uni:{'__G__':0,INTERIOR:0,EXTERIOR:0,TELA:0,'SERVICIO DE TEJEDURIA':0,COPAS:0}};
-const DEFAULT_URL='https://script.google.com/macros/s/AKfycbzfgZ4cS8gCH2k6maNw7SoOltxm4kf7W1x_pmt_tKflgCxQbJXfs21chg3jPoqWXdQGEQ/exec';
-let RAW=[],URL_S=localStorage.getItem('dm_u')||DEFAULT_URL;
-let hCOP=new Set(),hUNI=new Set(),YR='all',MES='all',SEM='all',CT='all';
-let DRILL_COP='month', DRILL_UNI='month'; // 'year','month','week'
+let RAW=[],URL_S=localStorage.getItem('dm_u')||'';
+let hCOP=new Set(),hUNI=new Set();
 let MT=JSON.parse(localStorage.getItem('dm_m4')||'null')||JSON.parse(JSON.stringify(DEF_M));
-
-// ── DEMO DATA ──────────────────────────────────────────────────────────────
-const DEMO=[
-{mes:'2025-01',lb:"Ene '25",cat:'INTERIOR',t:407317122,u:18200},
-{mes:'2025-01',lb:"Ene '25",cat:'EXTERIOR',t:1463748691,u:28500},
-{mes:'2025-01',lb:"Ene '25",cat:'TELA',t:77425485,u:3200},
-{mes:'2025-01',lb:"Ene '25",cat:'COPAS',t:21320068,u:1820},
-{mes:'2025-01',lb:"Ene '25",cat:'SERVICIO DE TEJEDURIA',t:102240445,u:4100},
-{mes:'2025-02',lb:"Feb '25",cat:'INTERIOR',t:1370402160,u:62000},
-{mes:'2025-02',lb:"Feb '25",cat:'EXTERIOR',t:258013954,u:8100},
-{mes:'2025-02',lb:"Feb '25",cat:'TELA',t:147029717,u:5900},
-{mes:'2025-02',lb:"Feb '25",cat:'COPAS',t:55295306,u:4200},
-{mes:'2025-02',lb:"Feb '25",cat:'SERVICIO DE TEJEDURIA',t:117377620,u:4800},
-{mes:'2025-03',lb:"Mar '25",cat:'INTERIOR',t:1497786503,u:67000},
-{mes:'2025-03',lb:"Mar '25",cat:'EXTERIOR',t:250893541,u:7800},
-{mes:'2025-03',lb:"Mar '25",cat:'TELA',t:90413223,u:3600},
-{mes:'2025-03',lb:"Mar '25",cat:'COPAS',t:108268078,u:8100},
-{mes:'2025-03',lb:"Mar '25",cat:'SERVICIO DE TEJEDURIA',t:116805627,u:4700},
-{mes:'2025-04',lb:"Abr '25",cat:'INTERIOR',t:1200741128,u:54000},
-{mes:'2025-04',lb:"Abr '25",cat:'EXTERIOR',t:150541355,u:4900},
-{mes:'2025-04',lb:"Abr '25",cat:'TELA',t:112629313,u:4500},
-{mes:'2025-04',lb:"Abr '25",cat:'COPAS',t:69847339,u:5300},
-{mes:'2025-04',lb:"Abr '25",cat:'SERVICIO DE TEJEDURIA',t:62470436,u:2500},
-{mes:'2025-05',lb:"May '25",cat:'INTERIOR',t:1123706210,u:50500},
-{mes:'2025-05',lb:"May '25",cat:'EXTERIOR',t:92186530,u:3000},
-{mes:'2025-05',lb:"May '25",cat:'TELA',t:250614157,u:10000},
-{mes:'2025-05',lb:"May '25",cat:'COPAS',t:46403939,u:3500},
-{mes:'2025-05',lb:"May '25",cat:'SERVICIO DE TEJEDURIA',t:96869820,u:3900},
-{mes:'2025-06',lb:"Jun '25",cat:'INTERIOR',t:991387268,u:44500},
-{mes:'2025-06',lb:"Jun '25",cat:'EXTERIOR',t:196878098,u:6200},
-{mes:'2025-06',lb:"Jun '25",cat:'TELA',t:250787042,u:10000},
-{mes:'2025-06',lb:"Jun '25",cat:'COPAS',t:20425880,u:1600},
-{mes:'2025-06',lb:"Jun '25",cat:'SERVICIO DE TEJEDURIA',t:77464530,u:3100},
-{mes:'2025-07',lb:"Jul '25",cat:'INTERIOR',t:1579567596,u:71000},
-{mes:'2025-07',lb:"Jul '25",cat:'EXTERIOR',t:148535762,u:4700},
-{mes:'2025-07',lb:"Jul '25",cat:'TELA',t:257734167,u:10300},
-{mes:'2025-07',lb:"Jul '25",cat:'COPAS',t:39951207,u:3000},
-{mes:'2025-07',lb:"Jul '25",cat:'SERVICIO DE TEJEDURIA',t:153659537,u:6200},
-{mes:'2025-08',lb:"Ago '25",cat:'INTERIOR',t:960939714,u:43200},
-{mes:'2025-08',lb:"Ago '25",cat:'EXTERIOR',t:354650457,u:11100},
-{mes:'2025-08',lb:"Ago '25",cat:'TELA',t:105489362,u:4200},
-{mes:'2025-08',lb:"Ago '25",cat:'COPAS',t:55510210,u:4200},
-{mes:'2025-08',lb:"Ago '25",cat:'SERVICIO DE TEJEDURIA',t:98782315,u:3900},
-{mes:'2025-09',lb:"Sep '25",cat:'INTERIOR',t:1634707858,u:73500},
-{mes:'2025-09',lb:"Sep '25",cat:'EXTERIOR',t:395709130,u:12400},
-{mes:'2025-09',lb:"Sep '25",cat:'TELA',t:212198002,u:8500},
-{mes:'2025-09',lb:"Sep '25",cat:'COPAS',t:27244776,u:2100},
-{mes:'2025-09',lb:"Sep '25",cat:'SERVICIO DE TEJEDURIA',t:78111416,u:3100},
-{mes:'2025-10',lb:"Oct '25",cat:'INTERIOR',t:2501739206,u:112500},
-{mes:'2025-10',lb:"Oct '25",cat:'EXTERIOR',t:563686868,u:17700},
-{mes:'2025-10',lb:"Oct '25",cat:'TELA',t:320614890,u:12800},
-{mes:'2025-10',lb:"Oct '25",cat:'COPAS',t:17760654,u:1350},
-{mes:'2025-10',lb:"Oct '25",cat:'SERVICIO DE TEJEDURIA',t:49405830,u:2000},
-{mes:'2025-11',lb:"Nov '25",cat:'INTERIOR',t:2361878792,u:106200},
-{mes:'2025-11',lb:"Nov '25",cat:'EXTERIOR',t:451164993,u:14200},
-{mes:'2025-11',lb:"Nov '25",cat:'TELA',t:109091929,u:4400},
-{mes:'2025-11',lb:"Nov '25",cat:'COPAS',t:51656958,u:3900},
-{mes:'2025-11',lb:"Nov '25",cat:'SERVICIO DE TEJEDURIA',t:40357195,u:1600},
-{mes:'2025-12',lb:"Dic '25",cat:'INTERIOR',t:181803866,u:8200},
-{mes:'2025-12',lb:"Dic '25",cat:'EXTERIOR',t:1242574908,u:39000},
-{mes:'2025-12',lb:"Dic '25",cat:'TELA',t:314623794,u:12600},
-{mes:'2025-12',lb:"Dic '25",cat:'COPAS',t:80159262,u:6100},
-{mes:'2025-12',lb:"Dic '25",cat:'SERVICIO DE TEJEDURIA',t:281723840,u:11300},
-{mes:'2026-01',lb:"Ene '26",cat:'INTERIOR',t:450657576,u:20300},
-{mes:'2026-01',lb:"Ene '26",cat:'EXTERIOR',t:653833637,u:20500},
-{mes:'2026-01',lb:"Ene '26",cat:'TELA',t:236704980,u:9500},
-{mes:'2026-01',lb:"Ene '26",cat:'COPAS',t:22002455,u:1680},
-{mes:'2026-01',lb:"Ene '26",cat:'SERVICIO DE TEJEDURIA',t:46029340,u:1850},
-{mes:'2026-02',lb:"Feb '26",cat:'INTERIOR',t:714204163,u:32100},
-{mes:'2026-02',lb:"Feb '26",cat:'EXTERIOR',t:174493657,u:5500},
-{mes:'2026-02',lb:"Feb '26",cat:'TELA',t:281548900,u:11300},
-{mes:'2026-02',lb:"Feb '26",cat:'COPAS',t:88607365,u:6700},
-{mes:'2026-02',lb:"Feb '26",cat:'SERVICIO DE TEJEDURIA',t:63699218,u:2550},
-{mes:'2026-03',lb:"Mar '26",cat:'INTERIOR',t:1040640025,u:46800},
-{mes:'2026-03',lb:"Mar '26",cat:'EXTERIOR',t:216839673,u:6800},
-{mes:'2026-03',lb:"Mar '26",cat:'TELA',t:454865510,u:18200},
-{mes:'2026-03',lb:"Mar '26",cat:'COPAS',t:85375059,u:6500},
-{mes:'2026-03',lb:"Mar '26",cat:'SERVICIO DE TEJEDURIA',t:49855947,u:2000},
-{mes:'2026-04',lb:"Abr '26",cat:'INTERIOR',t:1174835164,u:52800},
-{mes:'2026-04',lb:"Abr '26",cat:'EXTERIOR',t:426367321,u:13400},
-{mes:'2026-04',lb:"Abr '26",cat:'TELA',t:451885113,u:18100},
-{mes:'2026-04',lb:"Abr '26",cat:'COPAS',t:28427516,u:2150},
-{mes:'2026-04',lb:"Abr '26",cat:'SERVICIO DE TEJEDURIA',t:43911612,u:1760}
-];
-
-// Demo: week-level data derived by splitting each month into ~4 weeks
-const DEMO_W = (()=>{
-  const MN=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-  const out=[];
-  DEMO.forEach(d=>{
-    const [yr,mo]=d.mes.split('-');
-    const moIdx=parseInt(mo)-1;
-    const wk1=[.28,.26,.25,.21]; // rough week split fractions
-    for(let w=0;w<4;w++){
-      const wNum=Math.floor((moIdx)*4.33)+w+1;
-      out.push({...d,
-        week:`${yr}-W${String(wNum).padStart(2,'0')}`,
-        wlb:`S${w+1} ${MN[moIdx]}'${yr.slice(2)}`,
-        t:Math.round(d.t*wk1[w]),
-        u:Math.round(d.u*wk1[w])
-      });
-    }
-  });
-  return out;
-})();
-
-const D_CLI=[{n:'ALMACENES EXITO S.A.',v:18374168632},{n:'RANKING SPORT S.A.S',v:2010525132},{n:'YOYO SAS',v:1315812815},{n:'COMODIN S.A.S.',v:812806000},{n:'STOP SAS',v:794825250},{n:'EL EXITO BETANCUR',v:620277924},{n:'MODA OXFORD S.A.S',v:561218700},{n:'TENNIS S.A',v:461796011}];
-// AGENCIA and AGENCIA 2 shown as separate rows
-const D_VEN=[{n:'LAURA VALLEJO ECHEVERRY',v:4671286032},{n:'OSCAR A. SANCHEZ RICO',v:1434915065},{n:'JUAN PABLO PEREZ CASTRO',v:1259224381},{n:'AGENCIA',v:968432000},{n:'AGENCIA 2',v:541200000},{n:'LILIANA M. MEJIA LOPERA',v:793345578},{n:'NICOLAS PEREZ CASTRO',v:748844266},{n:'GUSTAVO PIZANO',v:385822514}];
-const D_SUB=[{n:'BRASIER',v:11237460000,cat:'INTERIOR'},{n:'PANTY',v:3749599000,cat:'INTERIOR'},{n:'TELA',v:3673656000,cat:'TELA'},{n:'BOXER',v:3609928000,cat:'INTERIOR'},{n:'SV. TEJEDURÍA',v:1478765000,cat:'SERVICIO DE TEJEDURIA'},{n:'TOP',v:1356695000,cat:'INTERIOR'},{n:'CAMISA',v:1165061000,cat:'EXTERIOR'},{n:'COPAS',v:818256000,cat:'COPAS'},{n:'CHAQUETA',v:814739000,cat:'EXTERIOR'},{n:'CAMISETA',v:618844000,cat:'INTERIOR'}];
-
+// MULTIFILTROS: cada uno es un Set; vacío = todos
+const F={year:new Set(),mes:new Set(),cat:new Set(),vend:new Set(),cli:new Set(),sub:new Set()};
+const FDEFS=[{k:'year',lbl:'Año',field:'year'},{k:'mes',lbl:'Mes',field:'mes'},{k:'cat',lbl:'Línea',field:'cat'},{k:'vend',lbl:'Vendedor',field:'vend'},{k:'cli',lbl:'Cliente',field:'cli'},{k:'sub',lbl:'Subcat',field:'sub'}];
+const CATLBL={'INTERIOR':'Interior','EXTERIOR':'Exterior','TELA':'Tela','COPAS':'Copas','SERVICIO DE TEJEDURIA':'Sv. Tejeduría'};
+const DEMO=[{mes:'2025-01',lb:"Ene '25",cat:'INTERIOR',sub:'BRASIER',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:407317122,u:18200},{mes:'2025-01',lb:"Ene '25",cat:'EXTERIOR',sub:'CAMISA',vend:'OSCAR A. SANCHEZ RICO',cli:'RANKING SPORT S.A.S',t:1463748691,u:28500},{mes:'2025-01',lb:"Ene '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:77425485,u:3200},{mes:'2025-01',lb:"Ene '25",cat:'COPAS',sub:'COPAS',vend:'CAROLINA AGUDELO',cli:'COMODIN S.A.S.',t:21320068,u:1820},{mes:'2025-01',lb:"Ene '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:102240445,u:4100},{mes:'2025-02',lb:"Feb '25",cat:'INTERIOR',sub:'PANTY',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:1370402160,u:62000},{mes:'2025-02',lb:"Feb '25",cat:'EXTERIOR',sub:'CHAQUETA',vend:'OSCAR A. SANCHEZ RICO',cli:'MODA OXFORD S.A.S',t:258013954,u:8100},{mes:'2025-02',lb:"Feb '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:147029717,u:5900},{mes:'2025-02',lb:"Feb '25",cat:'COPAS',sub:'COPAS',vend:'TATIANA RINCON M.',cli:'TENNIS S.A',t:55295306,u:4200},{mes:'2025-02',lb:"Feb '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:117377620,u:4800},{mes:'2025-03',lb:"Mar '25",cat:'INTERIOR',sub:'BOXER',vend:'LILIANA M. MEJIA LOPERA',cli:'EL EXITO BETANCUR',t:1497786503,u:67000},{mes:'2025-03',lb:"Mar '25",cat:'EXTERIOR',sub:'CAMISA',vend:'OSCAR A. SANCHEZ RICO',cli:'RANKING SPORT S.A.S',t:250893541,u:7800},{mes:'2025-03',lb:"Mar '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:90413223,u:3600},{mes:'2025-03',lb:"Mar '25",cat:'COPAS',sub:'COPAS',vend:'CAROLINA AGUDELO',cli:'COMODIN S.A.S.',t:108268078,u:8100},{mes:'2025-03',lb:"Mar '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:116805627,u:4700},{mes:'2025-04',lb:"Abr '25",cat:'INTERIOR',sub:'BRASIER',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:1200741128,u:54000},{mes:'2025-04',lb:"Abr '25",cat:'EXTERIOR',sub:'CAMISA',vend:'NICOLAS PEREZ CASTRO',cli:'RANKING SPORT S.A.S',t:150541355,u:4900},{mes:'2025-04',lb:"Abr '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:112629313,u:4500},{mes:'2025-04',lb:"Abr '25",cat:'COPAS',sub:'COPAS',vend:'TATIANA RINCON M.',cli:'TENNIS S.A',t:69847339,u:5300},{mes:'2025-04',lb:"Abr '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:62470436,u:2500},{mes:'2025-05',lb:"May '25",cat:'INTERIOR',sub:'TOP',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:1123706210,u:50500},{mes:'2025-05',lb:"May '25",cat:'EXTERIOR',sub:'CAMISETA',vend:'OSCAR A. SANCHEZ RICO',cli:'MODA OXFORD S.A.S',t:92186530,u:3000},{mes:'2025-05',lb:"May '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:250614157,u:10000},{mes:'2025-05',lb:"May '25",cat:'COPAS',sub:'COPAS',vend:'CAROLINA AGUDELO',cli:'COMODIN S.A.S.',t:46403939,u:3500},{mes:'2025-05',lb:"May '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:96869820,u:3900},{mes:'2025-06',lb:"Jun '25",cat:'INTERIOR',sub:'BRASIER',vend:'LILIANA M. MEJIA LOPERA',cli:'EL EXITO BETANCUR',t:991387268,u:44500},{mes:'2025-06',lb:"Jun '25",cat:'EXTERIOR',sub:'CHAQUETA',vend:'OSCAR A. SANCHEZ RICO',cli:'RANKING SPORT S.A.S',t:196878098,u:6200},{mes:'2025-06',lb:"Jun '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:250787042,u:10000},{mes:'2025-06',lb:"Jun '25",cat:'COPAS',sub:'COPAS',vend:'TATIANA RINCON M.',cli:'TENNIS S.A',t:20425880,u:1600},{mes:'2025-06',lb:"Jun '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:77464530,u:3100},{mes:'2025-07',lb:"Jul '25",cat:'INTERIOR',sub:'BRASIER',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:1579567596,u:71000},{mes:'2025-07',lb:"Jul '25",cat:'EXTERIOR',sub:'CAMISA',vend:'NICOLAS PEREZ CASTRO',cli:'MODA OXFORD S.A.S',t:148535762,u:4700},{mes:'2025-07',lb:"Jul '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:257734167,u:10300},{mes:'2025-07',lb:"Jul '25",cat:'COPAS',sub:'COPAS',vend:'CAROLINA AGUDELO',cli:'COMODIN S.A.S.',t:39951207,u:3000},{mes:'2025-07',lb:"Jul '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:153659537,u:6200},{mes:'2025-08',lb:"Ago '25",cat:'INTERIOR',sub:'PANTY',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:960939714,u:43200},{mes:'2025-08',lb:"Ago '25",cat:'EXTERIOR',sub:'CAMISA',vend:'OSCAR A. SANCHEZ RICO',cli:'RANKING SPORT S.A.S',t:354650457,u:11100},{mes:'2025-08',lb:"Ago '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:105489362,u:4200},{mes:'2025-08',lb:"Ago '25",cat:'COPAS',sub:'COPAS',vend:'TATIANA RINCON M.',cli:'TENNIS S.A',t:55510210,u:4200},{mes:'2025-08',lb:"Ago '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:98782315,u:3900},{mes:'2025-09',lb:"Sep '25",cat:'INTERIOR',sub:'BRASIER',vend:'LILIANA M. MEJIA LOPERA',cli:'EL EXITO BETANCUR',t:1634707858,u:73500},{mes:'2025-09',lb:"Sep '25",cat:'EXTERIOR',sub:'CHAQUETA',vend:'OSCAR A. SANCHEZ RICO',cli:'MODA OXFORD S.A.S',t:395709130,u:12400},{mes:'2025-09',lb:"Sep '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:212198002,u:8500},{mes:'2025-09',lb:"Sep '25",cat:'COPAS',sub:'COPAS',vend:'CAROLINA AGUDELO',cli:'COMODIN S.A.S.',t:27244776,u:2100},{mes:'2025-09',lb:"Sep '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:78111416,u:3100},{mes:'2025-10',lb:"Oct '25",cat:'INTERIOR',sub:'BRASIER',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:2501739206,u:112500},{mes:'2025-10',lb:"Oct '25",cat:'EXTERIOR',sub:'CAMISA',vend:'NICOLAS PEREZ CASTRO',cli:'RANKING SPORT S.A.S',t:563686868,u:17700},{mes:'2025-10',lb:"Oct '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:320614890,u:12800},{mes:'2025-10',lb:"Oct '25",cat:'COPAS',sub:'COPAS',vend:'TATIANA RINCON M.',cli:'TENNIS S.A',t:17760654,u:1350},{mes:'2025-10',lb:"Oct '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:49405830,u:2000},{mes:'2025-11',lb:"Nov '25",cat:'INTERIOR',sub:'BOXER',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:2361878792,u:106200},{mes:'2025-11',lb:"Nov '25",cat:'EXTERIOR',sub:'CAMISA',vend:'OSCAR A. SANCHEZ RICO',cli:'MODA OXFORD S.A.S',t:451164993,u:14200},{mes:'2025-11',lb:"Nov '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:109091929,u:4400},{mes:'2025-11',lb:"Nov '25",cat:'COPAS',sub:'COPAS',vend:'CAROLINA AGUDELO',cli:'COMODIN S.A.S.',t:51656958,u:3900},{mes:'2025-11',lb:"Nov '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:40357195,u:1600},{mes:'2025-12',lb:"Dic '25",cat:'INTERIOR',sub:'BRASIER',vend:'LILIANA M. MEJIA LOPERA',cli:'EL EXITO BETANCUR',t:181803866,u:8200},{mes:'2025-12',lb:"Dic '25",cat:'EXTERIOR',sub:'CHAQUETA',vend:'OSCAR A. SANCHEZ RICO',cli:'RANKING SPORT S.A.S',t:1242574908,u:39000},{mes:'2025-12',lb:"Dic '25",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:314623794,u:12600},{mes:'2025-12',lb:"Dic '25",cat:'COPAS',sub:'COPAS',vend:'TATIANA RINCON M.',cli:'TENNIS S.A',t:80159262,u:6100},{mes:'2025-12',lb:"Dic '25",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:281723840,u:11300},{mes:'2026-01',lb:"Ene '26",cat:'INTERIOR',sub:'BRASIER',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:450657576,u:20300},{mes:'2026-01',lb:"Ene '26",cat:'EXTERIOR',sub:'CAMISA',vend:'NICOLAS PEREZ CASTRO',cli:'MODA OXFORD S.A.S',t:653833637,u:20500},{mes:'2026-01',lb:"Ene '26",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:236704980,u:9500},{mes:'2026-01',lb:"Ene '26",cat:'COPAS',sub:'COPAS',vend:'CAROLINA AGUDELO',cli:'COMODIN S.A.S.',t:22002455,u:1680},{mes:'2026-01',lb:"Ene '26",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:46029340,u:1850},{mes:'2026-02',lb:"Feb '26",cat:'INTERIOR',sub:'PANTY',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:714204163,u:32100},{mes:'2026-02',lb:"Feb '26",cat:'EXTERIOR',sub:'CHAQUETA',vend:'OSCAR A. SANCHEZ RICO',cli:'RANKING SPORT S.A.S',t:174493657,u:5500},{mes:'2026-02',lb:"Feb '26",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:281548900,u:11300},{mes:'2026-02',lb:"Feb '26",cat:'COPAS',sub:'COPAS',vend:'TATIANA RINCON M.',cli:'TENNIS S.A',t:88607365,u:6700},{mes:'2026-02',lb:"Feb '26",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:63699218,u:2550},{mes:'2026-03',lb:"Mar '26",cat:'INTERIOR',sub:'BRASIER',vend:'LILIANA M. MEJIA LOPERA',cli:'EL EXITO BETANCUR',t:1040640025,u:46800},{mes:'2026-03',lb:"Mar '26",cat:'EXTERIOR',sub:'CAMISA',vend:'OSCAR A. SANCHEZ RICO',cli:'MODA OXFORD S.A.S',t:216839673,u:6800},{mes:'2026-03',lb:"Mar '26",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:454865510,u:18200},{mes:'2026-03',lb:"Mar '26",cat:'COPAS',sub:'COPAS',vend:'CAROLINA AGUDELO',cli:'COMODIN S.A.S.',t:85375059,u:6500},{mes:'2026-03',lb:"Mar '26",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:49855947,u:2000},{mes:'2026-04',lb:"Abr '26",cat:'INTERIOR',sub:'BRASIER',vend:'LAURA VALLEJO ECHEVERRY',cli:'ALMACENES EXITO S.A.',t:1174835164,u:52800},{mes:'2026-04',lb:"Abr '26",cat:'EXTERIOR',sub:'CAMISA',vend:'NICOLAS PEREZ CASTRO',cli:'RANKING SPORT S.A.S',t:426367321,u:13400},{mes:'2026-04',lb:"Abr '26",cat:'TELA',sub:'TELA',vend:'JUAN PABLO PEREZ CASTRO',cli:'YOYO SAS',t:451885113,u:18100},{mes:'2026-04',lb:"Abr '26",cat:'COPAS',sub:'COPAS',vend:'TATIANA RINCON M.',cli:'TENNIS S.A',t:28427516,u:2150},{mes:'2026-04',lb:"Abr '26",cat:'SERVICIO DE TEJEDURIA',sub:'SV. TEJEDURÍA',vend:'GUSTAVO PIZANO',cli:'STOP SAS',t:43911612,u:1760}];
 const fC=v=>v>=1e9?(v/1e9).toFixed(2)+' Mm':v>=1e6?(v/1e6).toFixed(1)+'M':(v/1e3).toFixed(0)+'K';
 const fCA=v=>v>=1e9?(v/1e9).toFixed(1)+'Mm':v>=1e6?(v/1e6).toFixed(0)+'M':(v/1e3).toFixed(0)+'K';
 const fU=v=>v>=1e6?(v/1e6).toFixed(2)+'M':v>=1e3?(v/1e3).toFixed(1)+'k':Math.round(v)+'';
 const fUA=v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFixed(0)+'k':Math.round(v)+'';
 const fP=v=>v.toFixed(1)+'%';
-
-// ── META HELPERS ───────────────────────────────────────────────────────────
-function getMetaForPeriod(type, drill){
-  // annual meta → divide by period count
-  const a = CT!=='all' ? MT[type][CT]||0 : MT[type]['__G__']||0;
-  if(!a) return 0;
-  if(drill==='year') return a;
-  if(drill==='month') return a/12;
-  if(drill==='week') return a/52;
-  return a/12;
-}
-function getMeta(t){ return getMetaForPeriod(t, DRILL_COP); }
-function getML(t){
-  const l=CT!=='all'?(LINES.find(x=>x.key===CT)?.label||CT):'Global';
-  const pStr=DRILL_COP==='year'?'anual':DRILL_COP==='week'?'semanal':'mensual';
-  return `Meta ${l} (${pStr})`;
-}
-function getMLUni(t){
-  const l=CT!=='all'?(LINES.find(x=>x.key===CT)?.label||CT):'Global';
-  const pStr=DRILL_UNI==='year'?'anual':DRILL_UNI==='week'?'semanal':'mensual';
-  return `Meta ${l} (${pStr})`;
-}
-
+// meta usa filtro de categoría (si hay UNA categoría seleccionada usa su meta)
+function singleCat(){return F.cat.size===1?[...F.cat][0]:null}
+function getMeta(t){const c=singleCat();const a=c?MT[t][c]||0:MT[t]['__G__']||0;return a>0?a/12:0}
+function getML(t){const c=singleCat();const l=c?(CATLBL[c]||c):'Global';return'Meta '+l+' (mensual)'}
 function showL(t){document.getElementById('load-txt').textContent=t||'Cargando...';document.getElementById('load').classList.add('on')}
 function hideL(){document.getElementById('load').classList.remove('on')}
 function setSt(on,t){const d=document.getElementById('sdot');d.className='sdot'+(on?' on':'');document.getElementById('stxt').textContent=t}
@@ -414,499 +245,174 @@ function openMetaM(){
   document.getElementById('mmeta').classList.add('open');
 }
 function closeMetaM(){document.getElementById('mmeta').classList.remove('open')}
-function saveMetas(){
-  const cats=['__G__',...LINES.map(l=>l.key)];
-  cats.forEach(k=>{const ek=k.replace(/ /g,'_');const ec=document.getElementById('mca-'+ek);const eu=document.getElementById('mua-'+ek);if(ec)MT.cop[k]=parseFloat(ec.value||0)*1e9;if(eu)MT.uni[k]=parseFloat(eu.value||0)*1e3});
-  localStorage.setItem('dm_m4',JSON.stringify(MT));closeMetaM();renderAll(RAW.length===0)
+function saveMetas(){const cats=['__G__',...LINES.map(l=>l.key)];cats.forEach(k=>{const ek=k.replace(/ /g,'_');const ec=document.getElementById('mca-'+ek);const eu=document.getElementById('mua-'+ek);if(ec)MT.cop[k]=parseFloat(ec.value||0)*1e9;if(eu)MT.uni[k]=parseFloat(eu.value||0)*1e3});localStorage.setItem('dm_m4',JSON.stringify(MT));closeMetaM();renderAll(RAW.length===0)}
+function fetchJSONP(url){return new Promise((res,rej)=>{const cb='dmCB_'+Date.now();const s=document.createElement('script');const to=setTimeout(()=>{cl();rej(new Error('Timeout 15s'))},15000);function cl(){clearTimeout(to);delete window[cb];s.parentNode&&s.parentNode.removeChild(s)}window[cb]=d=>{cl();res(d)};s.src=url+(url.includes('?')?'&':'?')+'callback='+cb+'&_='+Date.now();s.onerror=()=>{cl();rej(new Error('Error de red. Verifica el URL y acceso "Cualquier persona".'))};document.head.appendChild(s)})}
+async function connectSheets(){const url=document.getElementById('sheets-url').value.trim();if(!url){alert('Pega el URL.');return}closeM();showL('Conectando...');try{const d=await fetchJSONP(url);if(!d.ok)throw new Error(d.error||'Error servidor');const rows=normalizeJSON(d.rows);if(rows.length<1)throw new Error('Sin datos');URL_S=url;localStorage.setItem('dm_u',url);RAW=rows;setSt(true,'Sheets · '+new Date().toLocaleTimeString('es-CO'));document.getElementById('ftxt')&&(document.getElementById('ftxt').textContent='Conectado ●');renderAll()}catch(e){hideL();alert('Error: '+e.message);useDemoData()}hideL()}
+async function refreshData(){if(!URL_S){openM();return}showL('Actualizando...');try{const d=await fetchJSONP(URL_S);if(!d.ok)throw new Error(d.error||'Error servidor');RAW=normalizeJSON(d.rows);setSt(true,'Actualizado · '+new Date().toLocaleTimeString('es-CO'));renderAll()}catch(e){hideL();alert('Error: '+e.message)}hideL()}
+function normalizeJSON(rows){const MN=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];return rows.map(r=>{const o={};Object.keys(r).forEach(k=>o[k.trim()]=String(r[k]??'').trim());let ms=o['Mes']||o['mes']||'',mk='';if(!isNaN(ms)&&ms>40000){const d=new Date(Date.UTC(1899,11,30)+Number(ms)*86400000);mk=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}else if(String(ms).includes('/')){const p=String(ms).split('/');if(p.length===3)mk=p[2]+'-'+p[1].padStart(2,'0')}else if(String(ms).includes('-'))mk=String(ms).substring(0,7);let lb='';if(mk){const[yr,mo]=mk.split('-');lb=MN[parseInt(mo)-1]+" '"+yr.slice(2)}return{mes:mk,lb,cat:(o['Categoría']||o['Categoria']||'OTRO').toUpperCase().trim(),sub:(o['SUBCATEGORIA']||o['Subcategoria']||'').toUpperCase().trim(),vend:(o['Nombre del Vendedor']||'').trim(),cli:(o['Nombre Cliente']||'').trim(),t:parseFloat(String(o['Total']||'0').replace(/[^0-9.-]/g,''))||0,u:parseFloat(String(o['Unidades']||o['unidades']||'0').replace(/[^0-9.-]/g,''))||0}}).filter(r=>r.mes&&r.t>0)}
+function useDemoData(){setSt(false,'Demo');renderAll(true)}
+// ── DATA SOURCE + MULTIFILTRO ──
+function rowYear(r){return r.mes.substring(0,4)}
+function applyFilters(rows){return rows.filter(r=>{if(F.year.size&&!F.year.has(rowYear(r)))return false;if(F.mes.size&&!F.mes.has(r.mes))return false;if(F.cat.size&&!F.cat.has(r.cat))return false;if(F.vend.size&&!F.vend.has(r.vend))return false;if(F.cli.size&&!F.cli.has(r.cli))return false;if(F.sub.size&&!F.sub.has(r.sub))return false;return true})}
+function srcRows(demo){return demo||RAW.length===0?DEMO:RAW}
+function filtered(demo){return applyFilters(srcRows(demo))}
+function uniqueVals(demo,field){const s=new Set();srcRows(demo).forEach(r=>{const v=field==='year'?rowYear(r):r[field];if(v)s.add(v)});return [...s].sort()}
+// ── FILTER BAR ──
+function buildFilters(demo){
+  const cont=document.getElementById('filters');
+  let html=FDEFS.map(fd=>{
+    const sel=F[fd.k];
+    const cnt=sel.size;
+    return '<div class="fdrop"><button class="fbtn'+(cnt?' active':'')+'" onclick="toggleMenu(event,\''+fd.k+'\')">'+fd.lbl+(cnt?'<span class="cnt">'+cnt+'</span>':'')+'<span class="arr">▾</span></button><div class="fmenu" id="menu-'+fd.k+'"></div></div>';
+  }).join('');
+  const anyActive=FDEFS.some(fd=>F[fd.k].size>0);
+  if(anyActive) html+='<button class="fclear" onclick="clearAllFilters()">✕ Limpiar</button>';
+  html+='<button class="fmeta" onclick="openMetaM()">◎ Metas</button>';
+  html+='<div class="fbadge"><span id="ficon">'+(RAW.length?'●':'○')+'</span><span id="ftxt">'+(RAW.length?'Conectado':'Demo')+'</span></div>';
+  cont.innerHTML=html;
 }
-
-// ── DRILL CONTROLS ─────────────────────────────────────────────────────────
-function setDrillCOP(lvl){
-  DRILL_COP=lvl;
-  document.querySelectorAll('#drill-cop .drill-btn').forEach(b=>{
-    b.classList.toggle('active',b.dataset.lvl===lvl);
-  });
-  renderCOP();
-  renderKPIs(RAW.length===0);
+let openMenuKey=null;
+function toggleMenu(e,key){
+  e.stopPropagation();
+  const menu=document.getElementById('menu-'+key);
+  const wasOpen=menu.classList.contains('open');
+  document.querySelectorAll('.fmenu').forEach(m=>m.classList.remove('open'));
+  if(wasOpen){openMenuKey=null;return}
+  const demo=RAW.length===0;
+  const fd=FDEFS.find(f=>f.k===key);
+  const vals=uniqueVals(demo,fd.field);
+  const needSearch=vals.length>8;
+  let html=needSearch?'<input class="fsearch" placeholder="Buscar..." oninput="filterOpts(\''+key+'\',this.value)" onclick="event.stopPropagation()">':'';
+  html+='<div id="opts-'+key+'">'+vals.map(v=>{
+    const lbl=key==='cat'?(CATLBL[v]||v):v;
+    const sel=F[key].has(v);
+    return '<div class="fopt'+(sel?' sel':'')+'" onclick="toggleOpt(event,\''+key+'\',\''+v.replace(/'/g,"\\'")+'\')"><span class="chk">'+(sel?'✓':'')+'</span>'+lbl+'</div>';
+  }).join('')+'</div>';
+  menu.innerHTML=html;
+  menu.classList.add('open');
+  openMenuKey=key;
 }
-function setDrillUNI(lvl){
-  DRILL_UNI=lvl;
-  document.querySelectorAll('#drill-uni .drill-btn').forEach(b=>{
-    b.classList.toggle('active',b.dataset.lvl===lvl);
-  });
-  renderUNI();
-  renderKPIs(RAW.length===0);
+function filterOpts(key,q){
+  q=q.toLowerCase();
+  document.querySelectorAll('#opts-'+key+' .fopt').forEach(o=>{o.style.display=o.textContent.toLowerCase().includes(q)?'':'none'})
 }
-
-// ── DATA HELPERS ───────────────────────────────────────────────────────────
-function getSrc(demo){ return demo||RAW.length===0 ? DEMO : RAW; }
-function getSrcW(demo){ return demo||RAW.length===0 ? DEMO_W : enrichWeeks(RAW); }
-
-// Enrich RAW with week info if not present
-function enrichWeeks(rows){
-  const MN=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-  return rows.map(r=>{
-    if(r.week) return r;
-    // fallback: use mes as week label
-    const [yr,mo]=r.mes.split('-');
-    const wNum=Math.floor((parseInt(mo)-1)*4.33)+1;
-    return{...r,week:`${yr}-W${String(wNum).padStart(2,'0')}`,wlb:`${MN[parseInt(mo)-1]}'${yr.slice(2)}`};
-  });
+function toggleOpt(e,key,val){
+  e.stopPropagation();
+  F[key].has(val)?F[key].delete(val):F[key].add(val);
+  // re-render menu item state
+  const opt=e.currentTarget;
+  const isSel=F[key].has(val);
+  opt.className='fopt'+(isSel?' sel':'');
+  opt.querySelector('.chk').textContent=isSel?'✓':'';
+  renderAll(RAW.length===0,true);
 }
-
-function filterBase(src, demo){
-  return src.filter(d=>{
-    const yrOk = YR==='all'||d.mes.startsWith(YR);
-    const mesOk = MES==='all'||d.mes===MES;
-    const catOk = CT==='all'||d.cat===CT;
-    return yrOk && mesOk && catOk;
-  });
+function clearAllFilters(){FDEFS.forEach(fd=>F[fd.k].clear());clearDrill(true);renderAll(RAW.length===0)}
+document.addEventListener('click',()=>{document.querySelectorAll('.fmenu').forEach(m=>m.classList.remove('open'));openMenuKey=null});
+// ── DRILL (clic en gráfico) ──
+function setDrillMonth(mes,lb){
+  F.mes.clear();F.mes.add(mes);
+  document.getElementById('drill').classList.add('show');
+  document.getElementById('drill-txt').innerHTML='Filtrando por <b>'+lb+'</b> — clic en un punto del gráfico aplica el mes a todo el tablero';
+  renderAll(RAW.length===0);
 }
-function filterWeek(srcW, demo){
-  return srcW.filter(d=>{
-    const yrOk = YR==='all'||d.mes.startsWith(YR);
-    const mesOk = MES==='all'||d.mes===MES;
-    const semOk = SEM==='all'||d.week===SEM;
-    const catOk = CT==='all'||d.cat===CT;
-    return yrOk && mesOk && semOk && catOk;
-  });
-}
-
-// Aggregate for chart by drill level
-function aggForDrill(demo, drill, fld){
-  // Returns [{key, lb, cat, t, u}] sorted
-  if(drill==='year'){
-    const src=filterBase(getSrc(demo), demo);
-    const m={};
-    src.forEach(d=>{
-      const yr=d.mes.substring(0,4);
-      const k=yr+'|'+d.cat;
-      if(!m[k])m[k]={key:yr,lb:yr,cat:d.cat,t:0,u:0};
-      m[k].t+=d.t; m[k].u+=(d.u||0);
-    });
-    return Object.values(m).sort((a,b)=>a.key.localeCompare(b.key));
-  }
-  if(drill==='week'){
-    const srcW=filterWeek(getSrcW(demo), demo);
-    const m={};
-    srcW.forEach(d=>{
-      const k=d.week+'|'+d.cat;
-      if(!m[k])m[k]={key:d.week,lb:d.wlb||d.week,cat:d.cat,t:0,u:0};
-      m[k].t+=d.t; m[k].u+=(d.u||0);
-    });
-    return Object.values(m).sort((a,b)=>a.key.localeCompare(b.key));
-  }
-  // default month
-  const src=filterBase(getSrc(demo), demo);
-  const m={};
-  src.forEach(d=>{
-    const k=d.mes+'|'+d.cat;
-    if(!m[k])m[k]={key:d.mes,lb:d.lb||d.mes,cat:d.cat,t:0,u:0};
-    m[k].t+=d.t; m[k].u+=(d.u||0);
-  });
-  return Object.values(m).sort((a,b)=>a.key.localeCompare(b.key));
-}
-
-function aggTotalForDrill(demo, drill, fld){
-  if(drill==='year'){
-    const src=filterBase(getSrc(demo),demo);
-    const m={};
-    src.forEach(d=>{const yr=d.mes.substring(0,4);if(!m[yr])m[yr]={key:yr,lb:yr,v:0};m[yr].v+=d[fld]||0});
-    return Object.values(m).sort((a,b)=>a.key.localeCompare(b.key));
-  }
-  if(drill==='week'){
-    const srcW=filterWeek(getSrcW(demo),demo);
-    const m={};
-    srcW.forEach(d=>{if(!m[d.week])m[d.week]={key:d.week,lb:d.wlb||d.week,v:0};m[d.week].v+=d[fld]||0});
-    return Object.values(m).sort((a,b)=>a.key.localeCompare(b.key));
-  }
-  const src=filterBase(getSrc(demo),demo);
-  const m={};
-  src.forEach(d=>{if(!m[d.mes])m[d.mes]={key:d.mes,lb:d.lb||d.mes,v:0};m[d.mes].v+=d[fld]||0});
-  return Object.values(m).sort((a,b)=>a.key.localeCompare(b.key));
-}
-
-// Legacy wrappers used by non-chart sections
-function aggMC(demo){ return aggForDrill(demo,'month','t'); }
-function aggTotal(demo,fld){ return aggTotalForDrill(demo,'month',fld); }
-
-// ── LAST PERIOD VALUE for KPI ──────────────────────────────────────────────
-function getLastPeriodTotal(demo, drill){
-  const totData = aggTotalForDrill(demo, drill, 't');
-  if(!totData.length) return {val:0, lbl:''};
-  const last = totData[totData.length-1];
-  return {val: last.v, lbl: last.lb};
-}
-
-// ── POPULATE FILTER OPTIONS ───────────────────────────────────────────────
-function buildMesOptions(demo){
-  const src=getSrc(demo);
-  const months=[...new Set(src.map(d=>d.mes))].sort();
-  const MN=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-  const sel=document.getElementById('f-mes');
-  const prev=sel.value;
-  sel.innerHTML='<option value="all">Todos</option>';
-  months.forEach(m=>{
-    const [yr,mo]=m.split('-');
-    const lb=MN[parseInt(mo)-1]+" '"+yr.slice(2);
-    sel.innerHTML+=`<option value="${m}">${lb}</option>`;
-  });
-  if(prev!=='all') sel.value=prev;
-}
-function buildSemOptions(demo){
-  const srcW=getSrcW(demo);
-  const weeks=[...new Map(srcW.map(d=>[d.week,{key:d.week,lb:d.wlb||d.week}])).values()].sort((a,b)=>a.key.localeCompare(b.key));
-  const sel=document.getElementById('f-sem');
-  const prev=sel.value;
-  sel.innerHTML='<option value="all">Todas</option>';
-  weeks.forEach(w=>{sel.innerHTML+=`<option value="${w.key}">${w.lb}</option>`});
-  if(prev!=='all') sel.value=prev;
-}
-
-// ── FETCH / CONNECT ────────────────────────────────────────────────────────
-function fetchJSONP(url){
-  return new Promise((resolve,reject)=>{
-    const cb='dmCB_'+Date.now();
-    const s=document.createElement('script');
-    const to=setTimeout(()=>{cleanup();reject(new Error('Timeout — el servidor no respondió en 5 minutos'))},300000);
-    function cleanup(){clearTimeout(to);delete window[cb];s.parentNode&&s.parentNode.removeChild(s)}
-    window[cb]=data=>{cleanup();resolve(data)};
-    s.src=url+(url.includes('?')?'&':'?')+'callback='+cb+'&_='+Date.now();
-    s.onerror=()=>{cleanup();reject(new Error('Error de red. Verifica el URL y que el acceso sea "Cualquier persona"'))};
-    document.head.appendChild(s);
-  })
-}
-async function connectSheets(){
-  const url=document.getElementById('sheets-url').value.trim();
-  if(!url){alert('Pega el URL del Apps Script.');return}
-  closeM();showL('Conectando...');
-  try{
-    const data=await fetchJSONP(url);
-    if(!data.ok)throw new Error(data.error||'Error del servidor');
-    const rows=normalizeJSON(data.rows);
-    if(rows.length<1)throw new Error('Sin datos en la hoja');
-    URL_S=url;localStorage.setItem('dm_u',url);
-    processRows(rows);
-    setSt(true,'Sheets · '+new Date().toLocaleTimeString('es-CO'));
-    document.getElementById('ftxt').textContent='Conectado ●';
-    renderAll();
-  }catch(e){hideL();alert('Error: '+e.message);useDemoData()}
-  hideL();
-}
-async function refreshData(){
-  if(!URL_S){openM();return}
-  showL('Actualizando...');
-  try{
-    const data=await fetchJSONP(URL_S);
-    if(!data.ok)throw new Error(data.error||'Error del servidor');
-    processRows(normalizeJSON(data.rows));
-    setSt(true,'Actualizado · '+new Date().toLocaleTimeString('es-CO'));
-    renderAll();
-  }catch(e){hideL();alert('Error: '+e.message)}
-  hideL();
-}
-function normalizeJSON(rows){
-  const MN=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-  return rows.map(r=>{
-    const o={};Object.keys(r).forEach(k=>o[k.trim()]=String(r[k]??'').trim());
-    let ms=o['Mes']||o['mes']||'',mk='';
-    if(!isNaN(ms)&&ms>40000){const d=new Date(Date.UTC(1899,11,30)+Number(ms)*86400000);mk=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
-    else if(String(ms).includes('/')){const p=String(ms).split('/');if(p.length===3)mk=p[2]+'-'+p[1].padStart(2,'0')}
-    else if(String(ms).includes('-'))mk=String(ms).substring(0,7);
-    let lb='';if(mk){const[yr,mo]=mk.split('-');lb=MN[parseInt(mo)-1]+" '"+yr.slice(2)}
-    return{...o,mes:mk,lb,
-      cat:(o['Categoría']||o['Categoria']||o['categoria']||'OTRO').toUpperCase().trim(),
-      sub:(o['SUBCATEGORIA']||o['Subcategoria']||o['subcategoria']||'').toUpperCase().trim(),
-      vend:(o['Nombre del Vendedor']||'').trim(),cli:(o['Nombre Cliente']||'').trim(),
-      t:parseFloat(String(o['Total']||o['total']||'0').replace(/[^0-9.-]/g,''))||0,
-      u:parseFloat(String(o['Cantidad']||o['cantidad']||o['Unidades']||o['unidades']||'0').replace(/[^0-9.-]/g,''))||0};
-  }).filter(r=>r.mes&&r.t!==0);
-}
-function processRows(rows){RAW=rows}
-function useDemoData(){setSt(false,'Demo');document.getElementById('ftxt').textContent='Demo';renderAll(true)}
-
-// ── VENDOR / CLIENT / SUBCAT helpers ──────────────────────────────────────
-function getFiltered(demo){
-  // Central filtered source respecting YR, MES, SEM, CT filters
-  const src = (demo||RAW.length===0) ? DEMO : RAW;
-  return src.filter(r=>{
-    const yrOk  = YR==='all'  || r.mes.startsWith(YR);
-    const mesOk = MES==='all' || r.mes===MES;
-    const catOk = CT==='all'  || r.cat===CT;
-    return yrOk && mesOk && catOk;
-  });
-}
-function getCli(d){
-  if(d||RAW.length===0) return D_CLI;
-  const m={};
-  getFiltered(d).forEach(r=>{if(!r.cli)return;m[r.cli]=(m[r.cli]||0)+r.t});
-  return Object.entries(m).map(([n,v])=>({n,v})).sort((a,b)=>b.v-a.v).slice(0,8);
-}
-function getVen(d){
-  if(d||RAW.length===0) return D_VEN;
-  const m={};
-  getFiltered(d).forEach(r=>{
-    const vend = r.vend && r.vend.trim() ? r.vend.trim() : '(Sin asignar)';
-    m[vend]=(m[vend]||0)+r.t;
-  });
-  return Object.entries(m)
-    .filter(([n])=>n.length>0)
-    .map(([n,v])=>({n,v}))
-    .sort((a,b)=>b.v-a.v)
-    .slice(0,12);
-}
-function getSub(d){
-  if(d||RAW.length===0) return D_SUB;
-  const m={},c={};
-  getFiltered(d).forEach(r=>{if(!r.sub)return;m[r.sub]=(m[r.sub]||0)+r.t;c[r.sub]=r.cat});
-  return Object.entries(m).map(([n,v])=>({n,v,cat:c[n]||'OTRO'})).sort((a,b)=>b.v-a.v).slice(0,10);
-}
-
-// ── KPI RENDER ─────────────────────────────────────────────────────────────
+function clearDrill(silent){F.mes.clear();document.getElementById('drill').classList.remove('show');if(!silent)renderAll(RAW.length===0)}
+// ── AGGREGATIONS ──
+function aggMC(demo){const m={};filtered(demo).forEach(r=>{const k=r.mes+'|'+r.cat;if(!m[k])m[k]={mes:r.mes,lb:r.lb,cat:r.cat,t:0,u:0};m[k].t+=r.t;m[k].u+=r.u});return Object.values(m).sort((a,b)=>a.mes.localeCompare(b.mes))}
+function aggTotal(demo,fld){const rows=filtered(demo);const m={};rows.forEach(d=>{if(!m[d.mes])m[d.mes]={mes:d.mes,lb:d.lb,v:0};m[d.mes].v+=d[fld]||0});return Object.values(m).sort((a,b)=>a.mes.localeCompare(b.mes))}
+function getCli(demo){const m={};filtered(demo).forEach(r=>{if(!r.cli)return;m[r.cli]=(m[r.cli]||0)+r.t});return Object.entries(m).map(([n,v])=>({n,v})).sort((a,b)=>b.v-a.v).slice(0,8)}
+function getVen(demo){const m={};filtered(demo).forEach(r=>{if(!r.vend||r.vend.toUpperCase()==='AGENCIA')return;m[r.vend]=(m[r.vend]||0)+r.t});return Object.entries(m).map(([n,v])=>({n,v})).sort((a,b)=>b.v-a.v).slice(0,8)}
+function getSub(demo){const m={},c={};filtered(demo).forEach(r=>{if(!r.sub)return;m[r.sub]=(m[r.sub]||0)+r.t;c[r.sub]=r.cat});return Object.entries(m).map(([n,v])=>({n,v,cat:c[n]||'OTRO'})).sort((a,b)=>b.v-a.v).slice(0,10)}
+// ── KPIs ──
 function renderKPIs(demo){
-  const d=demo??RAW.length===0;
-  const allMC=aggForDrill(d,'month','t');
-  const tot=allMC.reduce((s,x)=>s+x.t,0);
-  const totU=allMC.reduce((s,x)=>s+(x.u||0),0);
-  const bc={};allMC.forEach(x=>{bc[x.cat]=(bc[x.cat]||0)+x.t});
-  const months=[...new Set(allMC.map(x=>x.key))];
-  const avg=months.length?tot/months.length:0;
-  const interior=bc['INTERIOR']||0;
-
-  // KPI "Meta": cumplimiento del ÚLTIMO período según drill de COP
-  const meta=getMetaForPeriod('cop', DRILL_COP);
-  const {val:lastVal, lbl:lastLbl}=getLastPeriodTotal(d, DRILL_COP);
-  const pct=meta>0?lastVal/meta*100:0;
+  const d=aggMC(demo),tot=d.reduce((s,x)=>s+x.t,0),totU=d.reduce((s,x)=>s+(x.u||0),0);
+  const bc={};d.forEach(x=>{bc[x.cat]=(bc[x.cat]||0)+x.t});
+  const months=[...new Set(d.map(x=>x.mes))],avg=months.length?tot/months.length:0;
+  const interior=bc['INTERIOR']||0,meta=getMeta('cop'),pct=meta>0&&months.length?tot/months.length/meta*100:0;
   const mc=pct>=100?'#5A9E8A':pct>=75?'#A07858':'#C98A90';
-  const periodName=DRILL_COP==='year'?'último año':DRILL_COP==='week'?'última semana':'último mes';
-
-  const cards=[
-    {lbl:'Ventas Totales',val:fC(tot),sub:months.length+' meses',cls:'ka'},
-    {lbl:'Total Unidades',val:fU(totU),sub:'Todas las líneas',cls:'kb'},
-    {lbl:'Interior',val:fC(interior),sub:(tot?(interior/tot*100).toFixed(0):0)+'% del total',cls:'kc'},
-    {lbl:'Promedio Mensual',val:fC(avg),sub:'COP por mes',cls:'kd'},
-    {lbl:'Cumpl. Meta · '+periodName,val:meta>0?pct.toFixed(1)+'%':'-',sub:meta>0?fC(lastVal)+' / '+fC(meta)+' · '+lastLbl:'Sin meta',cls:'ke',prog:meta>0?Math.min(pct,100):0,mc}
-  ];
+  const cards=[{lbl:'Ventas Totales',val:fC(tot),sub:months.length+' meses',cls:'ka'},{lbl:'Total Unidades',val:fU(totU),sub:'Filtro actual',cls:'kb'},{lbl:'Interior',val:fC(interior),sub:(tot?(interior/tot*100).toFixed(0):0)+'% del total',cls:'kc'},{lbl:'Promedio Mensual',val:fC(avg),sub:'COP por mes',cls:'kd'},{lbl:getML('cop'),val:meta>0?pct.toFixed(1)+'%':'-',sub:meta>0?fC(avg)+' / '+fC(meta):'Sin meta',cls:'ke',prog:meta>0?Math.min(pct,100):0,mc}];
   document.getElementById('kgrid').innerHTML=cards.map(c=>'<div class="kcard '+c.cls+'"><div class="klbl">'+c.lbl+'</div><div class="kval"'+(c.mc?' style="color:'+c.mc+'"':'')+'>'+c.val+'</div><div class="ksub">'+c.sub+'</div>'+(c.prog!=null?'<div class="kbar"><div class="kbar-f" style="width:'+c.prog+'%;background:'+c.mc+'"></div></div>':'')+'</div>').join('');
 }
-
-// ── LEGEND BUILD ───────────────────────────────────────────────────────────
-function buildLeg(id,hSet){
-  document.getElementById(id).innerHTML=[...LINES,TOT].map(l=>{
-    const pfx=id.includes('cop')?'cop':'uni';
-    const sw=l.key==='__T__'?'background:repeating-linear-gradient(90deg,'+l.color+' 0,'+l.color+' 6px,transparent 6px,transparent 10px);height:1px;':l.dash?'background:repeating-linear-gradient(90deg,'+l.color+' 0,'+l.color+' 5px,transparent 5px,transparent 9px);':'background:'+l.color+';';
-    return '<div class="li on" id="'+pfx+'-'+l.key.replace(/ /g,'_')+'" onclick="togL(\''+l.key+'\',\''+pfx+'\')" style="color:'+l.color+'"><div class="lsw" style="'+sw+'"></div>'+l.label+'</div>';
-  }).join('');
-}
+// ── LEGEND ──
+function buildLeg(id,hSet){document.getElementById(id).innerHTML=[...LINES,TOT].map(l=>{const pfx=id.includes('cop')?'cop':'uni';const sw=l.key==='__T__'?'background:repeating-linear-gradient(90deg,'+l.color+' 0,'+l.color+' 6px,transparent 6px,transparent 10px);height:1px;':l.dash?'background:repeating-linear-gradient(90deg,'+l.color+' 0,'+l.color+' 5px,transparent 5px,transparent 9px);':'background:'+l.color+';';return '<div class="li on" id="'+pfx+'-'+l.key.replace(/ /g,'_')+'" onclick="togL(\''+l.key+'\',\''+pfx+'\')" style="color:'+l.color+'"><div class="lsw" style="'+sw+'"></div>'+l.label+'</div>'}).join('')}
 function togL(key,pfx){const hs=pfx==='cop'?hCOP:hUNI;hs.has(key)?hs.delete(key):hs.add(key);const el=document.getElementById(pfx+'-'+key.replace(/ /g,'_'));if(el)el.className='li '+(hs.has(key)?'off':'on');pfx==='cop'?renderCOP():renderUNI()}
-
-// ── CHART DRAW ─────────────────────────────────────────────────────────────
-function drawChart({svgId,tipId,hSet,data,totData,fld,fv,fa,meta,mLbl,mCol,drill}){
-  const mMap={};data.forEach(d=>{mMap[d.key]=d.lb});totData.forEach(d=>{mMap[d.key]=d.lb});
+// ── CHART (con clic en punto → filtra mes) ──
+function drawChart({svgId,tipId,hSet,data,totData,fld,fv,fa,meta,mLbl,mCol}){
+  const mMap={};data.forEach(d=>{mMap[d.mes]=d.lb});totData.forEach(d=>{mMap[d.mes]=d.lb});
   const months=Object.keys(mMap).sort(),labels=months.map(m=>mMap[m]),n=months.length;
-  const series=LINES.map(l=>{const bM={};data.filter(d=>d.cat===l.key).forEach(d=>{bM[d.key]=d[fld]||0});return{...l,vs:months.map(m=>bM[m]||0)}});
-  const tBM={};totData.forEach(d=>{tBM[d.key]=d.v||0});
+  const series=LINES.map(l=>{const bM={};data.filter(d=>d.cat===l.key).forEach(d=>{bM[d.mes]=d[fld]||0});return{...l,vs:months.map(m=>bM[m]||0)}});
+  const tBM={};totData.forEach(d=>{tBM[d.mes]=d.v||0});
   const tSer={...TOT,vs:months.map(m=>tBM[m]||0)};
   const all=[...series,tSer];
   const svg=document.getElementById(svgId);
   const W=svg.clientWidth||900,H=240,P={t:20,r:32,b:42,l:64},cW=W-P.l-P.r,cH=H-P.t-P.b;
-  const vis=all.filter(s=>!hSet.has(s.key));
-  const allV=vis.flatMap(s=>s.vs);if(meta>0)allV.push(meta);
+  const vis=all.filter(s=>!hSet.has(s.key));const allV=vis.flatMap(s=>s.vs);if(meta>0)allV.push(meta);
   const maxV=Math.max(...allV,1)*1.10;
-  const xP=i=>P.l+(n>1?i/(n-1)*cW:cW/2);
-  const yP=v=>P.t+cH-(v/maxV*cH);
-  const lm=document.getElementById('f-lbl').value;
+  const xP=i=>P.l+(n>1?i/(n-1)*cW:cW/2),yP=v=>P.t+cH-(v/maxV*cH);
   const ranked=[...series].sort((a,b)=>b.vs.reduce((s,v)=>s+v,0)-a.vs.reduce((s,v)=>s+v,0)).map(s=>s.key);
   let g='';
-  for(let i=0;i<=4;i++){const v=maxV*i/4,y=yP(v);g+='<line x1="'+P.l+'" x2="'+(P.l+cW)+'" y1="'+y+'" y2="'+y+'" stroke="var(--b1,#2A3540)" stroke-width="1"/><text x="'+(P.l-6)+'" y="'+(y+4)+'" text-anchor="end" fill="var(--t3,#3D5060)" font-size="10">'+fa(v)+'</text>'}
-  // year separator only in month/week view
-  if(drill!=='year'){
-    const si=months.findIndex(m=>m.startsWith('2026'));
-    if(si>0){const sx=xP(si)-(xP(1)-xP(0))/2;g+='<line x1="'+sx+'" x2="'+sx+'" y1="'+P.t+'" y2="'+(P.t+cH)+'" stroke="var(--b2,#28363F)" stroke-dasharray="3,3" stroke-width="1"/><text x="'+(sx+4)+'" y="'+(P.t+11)+'" fill="var(--t3,#3D5060)" font-size="9">2026</text>'}
-  }
-  let mH='';
-  if(meta>0){const my=yP(meta);if(my>P.t-4&&my<P.t+cH+4){mH+='<line x1="'+P.l+'" x2="'+(P.l+cW)+'" y1="'+my+'" y2="'+my+'" stroke="'+mCol+'" stroke-dasharray="5,3" stroke-width="1.2" opacity=".7"/>';mH+='<text x="'+(P.l+cW-3)+'" y="'+(my-5)+'" text-anchor="end" fill="'+mCol+'" font-size="9" font-weight="500">'+mLbl+': '+fa(meta)+'</text>'}}
-  const step=n>24?3:n>14?2:1;
-  let xA='';for(let i=0;i<n;i+=step)xA+='<text x="'+xP(i).toFixed(1)+'" y="'+(H-P.b+14)+'" text-anchor="middle" fill="var(--t3,#3D5060)" font-size="9">'+labels[i]+'</text>';
-  let paths='',dots='',lbls='';
-  all.forEach(s=>{
-    if(hSet.has(s.key))return;
-    const isT=s.key==='__T__';
-    const pts=s.vs.map((v,i)=>xP(i).toFixed(1)+','+yP(v).toFixed(1));
-    const lp='M'+pts.join(' L');
-    const ap=lp+' L'+xP(n-1)+','+(P.t+cH)+' L'+xP(0)+','+(P.t+cH)+' Z';
-    let da=s.dash?'stroke-dasharray="4,3"':'';if(isT)da='stroke-dasharray="6,3"';
-    paths+='<path d="'+ap+'" fill="'+s.color+'" fill-opacity="'+(isT?.02:.06)+'"/>';
-    paths+='<path d="'+lp+'" fill="none" stroke="'+s.color+'" stroke-width="'+(isT?1.8:1.6)+'" stroke-linejoin="round" stroke-linecap="round" '+da+'/>';
-    const show=!isT&&(lm==='all'||(lm==='top'&&ranked.indexOf(s.key)<3));
-    s.vs.forEach((v,i)=>{
-      if(!v)return;
-      const cx=xP(i).toFixed(1),cy=yP(v).toFixed(1);
-      dots+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(isT?2:3)+'" fill="'+s.color+'" stroke="var(--bg,#1C2128)" stroke-width="1.5" class="dot" data-m="'+labels[i]+'" style="cursor:crosshair"/>';
-      if(show)lbls+='<rect x="'+(parseFloat(cx)-15)+'" y="'+(parseFloat(cy)-20)+'" width="30" height="12" fill="#222930" fill-opacity=".95" stroke="'+s.color+'" stroke-width=".4"/><text x="'+cx+'" y="'+(parseFloat(cy)-11)+'" text-anchor="middle" fill="'+s.color+'" font-size="8.5" font-weight="600">'+fv(v)+'</text>';
-    });
-  });
+  for(let i=0;i<=4;i++){const v=maxV*i/4,y=yP(v);g+='<line x1="'+P.l+'" x2="'+(P.l+cW)+'" y1="'+y+'" y2="'+y+'" stroke="#2A3540" stroke-width="1"/><text x="'+(P.l-6)+'" y="'+(y+4)+'" text-anchor="end" fill="#3D5060" font-size="10">'+fa(v)+'</text>'}
+  const si=months.findIndex(m=>m.startsWith('2026'));
+  if(si>0){const sx=xP(si)-(xP(1)-xP(0))/2;g+='<line x1="'+sx+'" x2="'+sx+'" y1="'+P.t+'" y2="'+(P.t+cH)+'" stroke="#28363F" stroke-dasharray="3,3"/><text x="'+(sx+4)+'" y="'+(P.t+11)+'" fill="#3D5060" font-size="9">2026</text>'}
+  let mH='';if(meta>0){const my=yP(meta);if(my>P.t-4&&my<P.t+cH+4){mH+='<line x1="'+P.l+'" x2="'+(P.l+cW)+'" y1="'+my+'" y2="'+my+'" stroke="'+mCol+'" stroke-dasharray="5,3" stroke-width="1.2" opacity=".7"/><text x="'+(P.l+cW-3)+'" y="'+(my-5)+'" text-anchor="end" fill="'+mCol+'" font-size="9" font-weight="500">'+mLbl+': '+fa(meta)+'</text>'}}
+  const lm='all',step=n>14?2:1;
+  let xA='';for(let i=0;i<n;i+=step)xA+='<text x="'+xP(i).toFixed(1)+'" y="'+(H-P.b+14)+'" text-anchor="middle" fill="#3D5060" font-size="9">'+labels[i]+'</text>';
+  // hit zones para clic por mes
+  let hits='';for(let i=0;i<n;i++){const x=xP(i),half=n>1?cW/(n-1)/2:cW/2;hits+='<rect x="'+(x-half)+'" y="'+P.t+'" width="'+(half*2)+'" height="'+cH+'" fill="transparent" class="hit" data-mes="'+months[i]+'" data-lb="'+labels[i]+'" style="cursor:pointer"/>'}
+  let paths='',dots='';
+  all.forEach(s=>{if(hSet.has(s.key))return;const isT=s.key==='__T__';const pts=s.vs.map((v,i)=>xP(i).toFixed(1)+','+yP(v).toFixed(1));const lp='M'+pts.join(' L');const ap=lp+' L'+xP(n-1)+','+(P.t+cH)+' L'+xP(0)+','+(P.t+cH)+' Z';let da=s.dash?'stroke-dasharray="4,3"':'';if(isT)da='stroke-dasharray="6,3"';paths+='<path d="'+ap+'" fill="'+s.color+'" fill-opacity="'+(isT?.02:.06)+'"/><path d="'+lp+'" fill="none" stroke="'+s.color+'" stroke-width="'+(isT?1.8:1.6)+'" stroke-linejoin="round" stroke-linecap="round" '+da+'/>';s.vs.forEach((v,i)=>{if(!v)return;dots+='<circle cx="'+xP(i).toFixed(1)+'" cy="'+yP(v).toFixed(1)+'" r="'+(isT?2:3)+'" fill="'+s.color+'" stroke="#1C2128" stroke-width="1.5" pointer-events="none"/>'})});
   svg.setAttribute('viewBox','0 0 '+W+' '+H);
-  svg.innerHTML=g+mH+paths+lbls+dots+xA;
-  svg.querySelectorAll('.dot').forEach(dot=>{
-    dot.addEventListener('mouseenter',()=>{
-      const month=dot.getAttribute('data-m');
-      const rect=svg.getBoundingClientRect(),scX=rect.width/W,scY=rect.height/H;
-      const cx=parseFloat(dot.getAttribute('cx')),cy=parseFloat(dot.getAttribute('cy'));
-      const tip=document.getElementById(tipId);
-      let rows='';
-      all.filter(s=>!hSet.has(s.key)).forEach(s=>{const idx=labels.indexOf(month),v=idx>=0?s.vs[idx]:0;if(v>0)rows+='<div class="tip-r"><div class="tip-d" style="background:'+s.color+'"></div><span class="tip-n">'+s.label+'</span><span class="tip-v">'+fv(v)+'</span></div>'});
+  svg.innerHTML=g+mH+paths+dots+xA+hits;
+  // hover + click
+  const tip=document.getElementById(tipId);
+  svg.querySelectorAll('.hit').forEach(h=>{
+    const mes=h.getAttribute('data-mes'),lb=h.getAttribute('data-lb');
+    h.addEventListener('mousemove',e=>{
+      const rect=svg.getBoundingClientRect(),scX=rect.width/W;
+      const idx=months.indexOf(mes);
+      let rows='';all.filter(s=>!hSet.has(s.key)).forEach(s=>{const v=s.vs[idx];if(v>0)rows+='<div class="tip-r"><div class="tip-d" style="background:'+s.color+'"></div><span class="tip-n">'+s.label+'</span><span class="tip-v">'+fv(v)+'</span></div>'});
       if(meta>0)rows+='<div class="tip-r" style="margin-top:5px;border-top:1px solid #2D3540;padding-top:5px;"><div class="tip-d" style="background:'+mCol+'"></div><span class="tip-n">'+mLbl+'</span><span class="tip-v" style="color:'+mCol+'">'+fv(meta)+'</span></div>';
-      tip.innerHTML='<div class="tip-t">'+month+'</div>'+rows;
+      tip.innerHTML='<div class="tip-t">'+lb+'</div>'+rows+'<div class="tip-hint">▸ clic para filtrar este mes</div>';
       tip.style.display='block';
-      let tx=cx*scX+10,ty=cy*scY-26;
-      if(tx+185>svg.parentElement.clientWidth)tx=cx*scX-190;
-      tip.style.left=tx+'px';tip.style.top=ty+'px';
+      let tx=xP(idx)*scX+12;if(tx+185>svg.parentElement.clientWidth)tx=xP(idx)*scX-190;
+      tip.style.left=tx+'px';tip.style.top='10px';
     });
-    dot.addEventListener('mouseleave',()=>{document.getElementById(tipId).style.display='none'});
+    h.addEventListener('mouseleave',()=>{tip.style.display='none'});
+    h.addEventListener('click',()=>{tip.style.display='none';setDrillMonth(mes,lb)});
   });
 }
-
-function renderCOP(demo){
-  const d=demo??RAW.length===0;
-  const data=aggForDrill(d,DRILL_COP,'t');
-  const totData=aggTotalForDrill(d,DRILL_COP,'t');
-  const meta=getMetaForPeriod('cop',DRILL_COP);
-  const mLbl=getML('cop');
-  document.getElementById('mlbl-cop').textContent=meta>0?mLbl+': '+fC(meta):'';
-  const lvlLbl={'year':'Vista: Anual','month':'Vista: Mensual','week':'Vista: Semanal'};
-  document.getElementById('drill-cop-lbl').textContent=lvlLbl[DRILL_COP]||'';
-  drawChart({svgId:'svg-cop',tipId:'tip-cop',hSet:hCOP,data,totData,fld:'t',fv:fC,fa:fCA,meta,mLbl,mCol:'#C98A90',drill:DRILL_COP});
-}
-function renderUNI(demo){
-  const d=demo??RAW.length===0;
-  const data=aggForDrill(d,DRILL_UNI,'u');
-  const totData=aggTotalForDrill(d,DRILL_UNI,'u');
-  const meta=getMetaForPeriod('uni',DRILL_UNI);
-  const mLbl=getMLUni('uni');
-  document.getElementById('mlbl-uni').textContent=meta>0?mLbl+': '+fU(meta):'';
-  const lvlLbl={'year':'Vista: Anual','month':'Vista: Mensual','week':'Vista: Semanal'};
-  document.getElementById('drill-uni-lbl').textContent=lvlLbl[DRILL_UNI]||'';
-  drawChart({svgId:'svg-uni',tipId:'tip-uni',hSet:hUNI,data,totData,fld:'u',fv:fU,fa:fUA,meta,mLbl,mCol:'#C98A90',drill:DRILL_UNI});
-}
+function renderCOP(demo){const d=demo??(RAW.length===0);const data=aggMC(d),totData=aggTotal(d,'t'),meta=getMeta('cop');document.getElementById('mlbl-cop').textContent=meta>0?getML('cop')+': '+fC(meta):'';drawChart({svgId:'svg-cop',tipId:'tip-cop',hSet:hCOP,data,totData,fld:'t',fv:fC,fa:fCA,meta,mLbl:getML('cop'),mCol:'#C98A90'})}
+function renderUNI(demo){const d=demo??(RAW.length===0);const data=aggMC(d),totData=aggTotal(d,'u'),meta=getMeta('uni');document.getElementById('mlbl-uni').textContent=meta>0?getML('uni')+': '+fU(meta):'';drawChart({svgId:'svg-uni',tipId:'tip-uni',hSet:hUNI,data,totData,fld:'u',fv:fU,fa:fUA,meta,mLbl:getML('uni'),mCol:'#C98A90'})}
 function renderCharts(demo){renderCOP(demo);renderUNI(demo)}
-
-// ── DONUT ──────────────────────────────────────────────────────────────────
+// ── DONUT (clic = filtra categoría) ──
 function renderDonut(demo){
   const data=aggMC(demo),bc={};
   data.forEach(d=>{const k=['INTERIOR','EXTERIOR','TELA','COPAS','SERVICIO DE TEJEDURIA'].includes(d.cat)?d.cat:'OTRO';bc[k]=(bc[k]||0)+d.t});
   const tot=Object.values(bc).reduce((a,b)=>a+b,0),entries=Object.entries(bc).sort((a,b)=>b[1]-a[1]);
   const c=document.getElementById('donut'),ctx=c.getContext('2d');c.width=120;c.height=120;
   const cx=60,cy=60,R=55,r=34;ctx.clearRect(0,0,120,120);
-  let angle=-Math.PI/2;
-  entries.forEach(([cat,val])=>{const sl=(val/tot)*Math.PI*2;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,angle,angle+sl);ctx.closePath();ctx.fillStyle=CCAT[cat]||'#5A6878';ctx.fill();angle+=sl});
-  angle=-Math.PI/2;
-  entries.forEach(([,val])=>{const sl=(val/tot)*Math.PI*2;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(angle)*R,cy+Math.sin(angle)*R);ctx.strokeStyle='#1C2128';ctx.lineWidth=1.5;ctx.stroke();angle+=sl});
-  ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle=document.body.classList.contains('bw-mode')?'#F8F9FA':'#272E37';ctx.fill();
-  ctx.fillStyle='#C8D4DC';ctx.font='500 10px Inter,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(fC(tot),cx,cy-4);
-  ctx.fillStyle='#3D5060';ctx.font='8px Inter,sans-serif';ctx.fillText('TOTAL',cx,cy+8);
-  document.getElementById('dleg').innerHTML=entries.slice(0,6).map(([cat,val])=>'<div class="drow"><div class="dbar" style="background:'+(CCAT[cat]||'#5A6878')+'"></div><span class="dname">'+(cat==='SERVICIO DE TEJEDURIA'?'TEJEDURÍA':cat)+'</span><span class="dpct">'+fP(val/tot*100)+'</span></div>').join('');
+  let angle=-Math.PI/2;entries.forEach(([cat,val])=>{const sl=(val/tot)*Math.PI*2;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,angle,angle+sl);ctx.closePath();ctx.fillStyle=CCAT[cat]||'#5A6878';ctx.fill();angle+=sl});
+  angle=-Math.PI/2;entries.forEach(([,val])=>{const sl=(val/tot)*Math.PI*2;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(angle)*R,cy+Math.sin(angle)*R);ctx.strokeStyle='#1C2128';ctx.lineWidth=1.5;ctx.stroke();angle+=sl});
+  ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle='#272E37';ctx.fill();
+  ctx.fillStyle='#C8D4DC';ctx.font='500 10px Inter';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(fC(tot),cx,cy-4);
+  ctx.fillStyle='#3D5060';ctx.font='8px Inter';ctx.fillText('TOTAL',cx,cy+8);
+  document.getElementById('dleg').innerHTML=entries.slice(0,6).map(([cat,val])=>{const sel=F.cat.has(cat);return '<div class="drow'+(sel?' dsel':'')+'" onclick="toggleCatFilter(\''+cat.replace(/'/g,"\\'")+'\')"><div class="dbar" style="background:'+(CCAT[cat]||'#5A6878')+'"></div><span class="dname">'+(cat==='SERVICIO DE TEJEDURIA'?'TEJEDURÍA':cat)+'</span><span class="dpct">'+fP(val/tot*100)+'</span></div>'}).join('');
 }
-
-// ── CLIENTES with % ────────────────────────────────────────────────────────
-function renderCli(demo){
-  const data=getCli(demo);
-  const max=data[0]?.v||1;
-  const totAll=data.reduce((s,c)=>s+c.v,0);
-  const cols=['#5B8FA8','#5A9E8A','#C98A90','#A07858','#8AACC0','#7A909C','#5B8FA8','#5A9E8A'];
-  document.getElementById('cbars').innerHTML=data.map((c,i)=>`
-    <div class="brow">
-      <div class="blbl" title="${c.n}">${c.n}</div>
-      <div class="btrk">
-        <div class="bfil" style="width:${(c.v/max*100).toFixed(1)}%;background:${cols[i]}">
-          <span class="bval">${fC(c.v)}</span>
-        </div>
-      </div>
-      <div class="bpct">${fP(c.v/totAll*100)}</div>
-    </div>`).join('');
+function toggleCatFilter(cat){F.cat.has(cat)?F.cat.delete(cat):F.cat.add(cat);renderAll(RAW.length===0)}
+// ── CLIENTES (clic = filtra cliente) ──
+function renderCli(demo){const data=getCli(demo),max=data[0]?.v||1;const cols=['#5B8FA8','#5A9E8A','#C98A90','#A07858','#8AACC0','#7A909C','#5B8FA8','#5A9E8A'];document.getElementById('cbars').innerHTML=data.map((c,i)=>{const sel=F.cli.has(c.n);return '<div class="brow'+(sel?' bsel':'')+'" onclick="toggleCli(\''+c.n.replace(/'/g,"\\'")+'\')"><div class="blbl" title="'+c.n+'">'+c.n+'</div><div class="btrk"><div class="bfil" style="width:'+(c.v/max*100).toFixed(1)+'%;background:'+cols[i]+'"><span class="bval">'+fC(c.v)+'</span></div></div></div>'}).join('')}
+function toggleCli(n){F.cli.has(n)?F.cli.delete(n):F.cli.add(n);renderAll(RAW.length===0)}
+// ── VENDEDORES (clic = filtra vendedor) ──
+function renderVen(demo){const data=getVen(demo),tot=data.reduce((s,v)=>s+v.v,0);document.getElementById('vbody').innerHTML=data.map((v,i)=>{const sel=F.vend.has(v.n);return '<tr class="'+(sel?'vsel':'')+'" onclick="toggleVen(\''+v.n.replace(/'/g,"\\'")+'\')"><td><span class="vrk" style="color:'+RKCOL[i]+'">'+(i+1)+'</span></td><td>'+v.n+'</td><td style="font-weight:500;color:#C8D4DC">'+fC(v.v)+'</td><td>'+fP(tot?v.v/tot*100:0)+'</td></tr>'}).join('')}
+function toggleVen(n){F.vend.has(n)?F.vend.delete(n):F.vend.add(n);renderAll(RAW.length===0)}
+// ── SUBCAT (clic = filtra subcategoría) ──
+function renderSub(demo){const data=getSub(demo),max=data[0]?.v||1;document.getElementById('sbars').innerHTML=data.map(s=>{const sel=F.sub.has(s.n);return '<div class="brow'+(sel?' bsel':'')+'" onclick="toggleSub(\''+s.n.replace(/'/g,"\\'")+'\')"><div class="blbl">'+s.n+'</div><div class="btrk"><div class="bfil" style="width:'+(s.v/max*100).toFixed(1)+'%;background:'+(CCAT[s.cat]||'#5B8FA8')+'"><span class="bval">'+fC(s.v)+'</span></div></div></div>'}).join('')}
+function toggleSub(n){F.sub.has(n)?F.sub.delete(n):F.sub.add(n);renderAll(RAW.length===0)}
+// ── RENDER ALL ──
+function renderAll(demo=false,skipFilters){const d=demo||RAW.length===0;if(!skipFilters)buildFilters(d);renderKPIs(d);buildLeg('leg-cop',hCOP);buildLeg('leg-uni',hUNI);renderCharts(d);renderDonut(d);renderCli(d);renderVen(d);renderSub(d);
+  // sync drill banner with mes filter
+  if(F.mes.size===1){const m=[...F.mes][0];const row=srcRows(d).find(r=>r.mes===m);document.getElementById('drill').classList.add('show');document.getElementById('drill-txt').innerHTML='Filtrando por <b>'+(row?row.lb:m)+'</b>';}else if(F.mes.size===0){document.getElementById('drill').classList.remove('show')}
 }
-
-// ── VENDEDORES (AGENCIA ahora incluida) ────────────────────────────────────
-function renderVen(demo){
-  const data=getVen(demo);
-  const tot=data.reduce((s,v)=>s+v.v,0);
-  document.getElementById('vbody').innerHTML=data.map((v,i)=>'<tr><td><span class="vrk" style="color:'+RKCOL[i]+'">'+(i+1)+'</span></td><td>'+v.n+'</td><td style="font-weight:500;color:#C8D4DC">'+fC(v.v)+'</td><td>'+fP(v.v/tot*100)+'</td></tr>').join('');
-}
-
-// ── SUBCATEGORÍAS with % ───────────────────────────────────────────────────
-function renderSub(demo){
-  const data=getSub(demo);
-  const max=data[0]?.v||1;
-  const totAll=data.reduce((s,x)=>s+x.v,0);
-  document.getElementById('sbars').innerHTML=data.map(s=>`
-    <div class="brow">
-      <div class="blbl">${s.n}</div>
-      <div class="btrk">
-        <div class="bfil" style="width:${(s.v/max*100).toFixed(1)}%;background:${CCAT[s.cat]||'#5B8FA8'}">
-          <span class="bval">${fC(s.v)}</span>
-        </div>
-      </div>
-      <div class="bpct">${fP(s.v/totAll*100)}</div>
-    </div>`).join('');
-}
-
-// ── APPLY FILTERS ──────────────────────────────────────────────────────────
-function applyF(){
-  YR=document.getElementById('f-year').value;
-  MES=document.getElementById('f-mes').value;
-  SEM=document.getElementById('f-sem').value;
-  CT=document.getElementById('f-cat').value;
-  const d=RAW.length===0;
-  renderKPIs(d);renderCharts(d);renderDonut(d);
-  renderCli(d);renderVen(d);renderSub(d);
-}
-
-// ── RENDER ALL ─────────────────────────────────────────────────────────────
-function renderAll(demo=false){
-  const d=demo||RAW.length===0;
-  buildMesOptions(d);
-  buildSemOptions(d);
-  renderKPIs(d);
-  buildLeg('leg-cop',hCOP);
-  buildLeg('leg-uni',hUNI);
-  renderCharts(d);
-  renderDonut(d);
-  renderCli(d);
-  renderVen(d);
-  renderSub(d);
-}
-
-
-// ── B&N Toggle ─────────────────────────────────────────────────────────────
-function toggleBW(){
-  const on = document.body.classList.toggle('bw-mode');
-  localStorage.setItem('dm_bw', on?'1':'0');
-  document.getElementById('btn-bw').textContent = on ? '◐ Color' : '◑ B&N';
-  renderDonut(RAW.length===0); // redraw donut center bg
-}
-// ── INIT ───────────────────────────────────────────────────────────────────
-window.addEventListener('load',()=>{
-  // Restore B&W preference
-  if(localStorage.getItem('dm_bw')==='1'){
-    document.body.classList.add('bw-mode');
-    document.getElementById('btn-bw').textContent='◐ Color';
-  }
-  // init drill buttons
-  ['cop','uni'].forEach(pfx=>{
-    const drill = pfx==='cop'?DRILL_COP:DRILL_UNI;
-    document.querySelectorAll(`#drill-${pfx} .drill-btn`).forEach(b=>{
-      b.classList.toggle('active',b.dataset.lvl===drill);
-    });
-  });
-  if(URL_S){
-    document.getElementById('sheets-url').value=URL_S;
-    showL('Reconectando...');
-    fetchJSONP(URL_S).then(data=>{
-      if(data.ok&&data.rows.length>0){processRows(normalizeJSON(data.rows));setSt(true,'Sheets · '+new Date().toLocaleTimeString('es-CO'));document.getElementById('ftxt').textContent='Conectado ●';renderAll()}
-      else useDemoData();
-    }).catch(()=>useDemoData()).finally(()=>hideL());
-  }else{setTimeout(()=>{openM();useDemoData()},400)}
-});
+window.addEventListener('load',()=>{if(URL_S){document.getElementById('sheets-url').value=URL_S;showL('Reconectando...');fetchJSONP(URL_S).then(d=>{if(d.ok&&d.rows.length>0){RAW=normalizeJSON(d.rows);setSt(true,'Sheets · '+new Date().toLocaleTimeString('es-CO'));renderAll()}else useDemoData()}).catch(()=>useDemoData()).finally(()=>hideL())}else{setTimeout(()=>{openM();useDemoData()},400)}});
 window.addEventListener('resize',()=>renderCharts(RAW.length===0));
 </script>
 </body>
